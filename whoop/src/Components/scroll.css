@@ -1,0 +1,32 @@
+.scroll{
+    overflow-y: scroll;
+    scrollbar-color: transparent blue;
+    background-color: transparent;
+    height: 180px;
+    max-height: 180px;
+    position: relative;
+    bottom:40px;
+    z-index: 1;
+}
+
+/* For Webkit browsers (e.g., Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 10px; /* Set the width of the scrollbar */
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: #00F19F; 
+    border-radius: 20px;  
+}
+
+/* Default styles for screens wider than 14 inches */
+.element {
+    width: 615px;
+}
+  
+  /* Media query for screens up to 14 inches */
+@media (max-width: 16in) {
+    .element {
+        width: 370px; /* Set the width to 100% for screens up to 14 inches */
+    }
+}
