@@ -1,12 +1,23 @@
 import Model from 'react-body-highlighter';
 import {Box, Typography, Container} from '@mui/material';
+import { getLastWorkout } from '../Controllers/WorkoutController';
+import { useEffect } from 'react';
 
-export default function BodyPart() {
+export default function BodyPart({ token }) {
   const data = [
     { muscles: ['chest', 'triceps'], frequency: 3 },
     { name: 'Push Ups', muscles: ['chest'] },
     { name: 'Push Ups', muscles: ['triceps'] },
   ];
+
+    const getMuscles = async () => {
+        const data = await getLastWorkout(token);
+        console.log(data)
+    }
+
+    useEffect(() => {
+        getMuscles()
+    }, [])
 
   return (
     <Box>

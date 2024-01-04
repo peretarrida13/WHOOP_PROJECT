@@ -7,6 +7,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Navbar from "./Components/Navbar";
 import { useState } from "react";
+import Token from "./pages/Token";
 
 const darkTheme = createTheme({
   palette: {
@@ -40,6 +41,7 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/login" element={<LogIn />} /> 
           <Route path="/report/:id" element={<Report />} />
+          <Route path="/:token" element={<Token />} />
           <Route path="*" element={<NotFound/>} />
         </Routes>
       </ThemeProvider>

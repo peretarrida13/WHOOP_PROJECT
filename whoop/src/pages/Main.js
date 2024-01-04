@@ -1,24 +1,32 @@
 import { useEffect, useState } from "react";
 import { Box, CircularProgress, Paper } from "@mui/material";
-import { styled } from '@mui/material/styles';
 import BodyPart from "../Components/BodyPart";
 import IllnessSquare from "../Components/IllnessSquare";
 import RecoveryStrain from "../Components/RecoveryStrain";
 import ReportList from "../Components/ReportList";
 import LastPerformance from "../Components/LastPerformance";
 import '../Components/scroll.css'
+import Cookies from "universal-cookie";
 
 function Main() {
   const [loading, setLoading] = useState(true);
-  const [token, setToken] = useState('pere');
+  const [token, setToken] = useState('tok');
+  const cookies = new Cookies();
+
 
   useEffect(() => {
-    if(token) {
-      setLoading(false);
-    } else {
-      window.location.href = '/login';  // redirect to login page
+    const init = async () => {
+      const cookieWhoop = await cookies.get('whoopPerformance'); 
+      setToken(cookieWhoop);
+      if(token) {
+        setLoading(false);
+      } else {
+        //window.location.href = '/login';  // redirect to login page
+      }
     }
+    init();
   }, []);
+
 
   if(loading){
     return(
@@ -31,14 +39,14 @@ function Main() {
   return (
     <Box>
       <Box sx={{display:'flex'}}>
-        <BodyPart />
+        <BodyPart token={token}/>
       </Box>
       <Box sx={{position:'absolute', width:'60%', ml:70, height:500, top:190, display:'grid', columnGap:1, rowGap:1}}>
         <Paper className="element" sx={{ gridColumnStart:1, gridColumnEnd:2, borderRadius:3, height:230}}>
           <ReportList />
         </Paper>
         <Paper sx={{gridColumnStart:2, borderRadius:3}}>          
-          <RecoveryStrain />
+          <RecoveryStrain token={token} />
         </Paper>
         <Paper className="element" sx={{gridColumnStart:1, gridColumnEnd:2, borderRadius:3, height:300}}>
           <IllnessSquare />
