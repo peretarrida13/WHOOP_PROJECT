@@ -1,7 +1,6 @@
-
-export async function getLastWorkout(accessToken){
+export async function getLastWorkouts(accessToken){
     const query = new URLSearchParams({
-        limit: "4",
+        limit: "10",
     });
 
     const uri = `https://api.prod.whoop.com/developer/v1/activity/workout?${query}`
@@ -58,3 +57,40 @@ export async function getWorkoutByDates(accessToken){
         return data;
     }
 }
+
+export async function getWorkoutById(accessToken, id){
+    const uri = `https://api.prod.whoop.com/developer/v1/activity/workout/${id}`
+
+    const response = await fetch(uri, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        }
+    });
+
+    if(response.status === 200){
+        const data = await response.json();
+        return data;
+    }
+}
+/*
+
+"sport_id": 1,
+"score": {
+    "strain":
+    "average_heart_rate"
+    "max_heart_rate"
+    "kilojoule"
+    "distance_meter"
+    "altitude_gain_meter"
+    "altitude_change_meter"
+    "zone_duration": {
+        "zone_zero_milli"
+        "zone_one_milli"
+        "zone_two_milli"
+        "zone_three_milli"
+        "zone_four_milli"
+        "zone_five_milli"
+    }
+}
+*/

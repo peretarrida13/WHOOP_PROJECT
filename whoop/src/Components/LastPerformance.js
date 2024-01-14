@@ -1,12 +1,26 @@
 import { Typography } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import {calculatePerformance, getWorkoutType} from '../Utils/performanceCalculator';
 
-export default function LastPerformance(){  
+export default function LastPerformance({ workout }){  
     const [performance, setPerformance] = useState(0);
     const [maxHR, setMaxHR] = useState(0);
     const [avgHR, setAvgHR] = useState(0);
     const [calories, setCalories] = useState(0);
     const [type, setType] = useState(null);
+
+    useEffect(() => {
+        if(workout){
+            const perf = calculatePerformance(workout);
+            setPerformance(perf);        
+            setMaxHR(workout.score.max_heart_rate);
+            setAvgHR(workout.score.average_heart_rate);
+            setCalories(Math.floor(workout.score.kilojoule * 0.239006));
+            const sport = getWorkoutType(workout.sport_id);
+            console.log(sport)
+            setType(sport);
+        }
+    },[])
 
     return(
         <div style={{paddingLeft:20, paddingRight:20, color:'#00F19F'}}>
@@ -16,7 +30,7 @@ export default function LastPerformance(){
                 textAlign:'center',
                 justifyContent:'center'}}
             >
-                The last Exercise you did was a {type} workout.  After the review <br/> this are the numbers
+                The last Exercise you did was a <b><u>{type}</u></b> workout.  After the review <br/> this are the numbers
             </div>
             <div>
                 <ul>
