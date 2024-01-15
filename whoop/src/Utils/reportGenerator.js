@@ -86,8 +86,3 @@ export function getMaxHRZone(zoneDuration){
         return 5;
     }
 }
-
-
-export function calculateTime(workout){
-    
-}

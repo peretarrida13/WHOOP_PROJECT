@@ -66,3 +66,80 @@ export function parseIsoDateWithOffset(isoDateStr, offsetStr) {
     return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
 
 }
+
+
+export function getStrainInformation(strain){
+    if(0 <= strain && strain <= 4.2){
+        return {
+            title: "Low Strain", 
+            text: "You are well rested. Consider pushing yourself a bit more."
+        };
+    }
+    else if(4.2 < strain && strain <= 8.4){
+        return {
+            title: "Moderate Strain", 
+            text: "You are in a good state. Keep up the good work."
+        };
+    }
+    else if(8.4 < strain && strain <= 12.6){
+        return {
+            title: "High Strain", 
+            text: "You are in a high strain state. Consider taking a rest day."
+        };
+    }
+    else if(12.6 < strain && strain <= 16.8){
+        return {
+            title: "Very High Strain", 
+            text: "You are in a very high strain state. Consider taking a rest day."
+        };
+    } else if(16.8 < strain){
+        return {
+            title: "Extreme Strain", 
+            text: "You are in an extreme strain state. Consider taking a rest day."
+        };
+    }
+}
+
+
+export function getAverageHRInformation(avgHR){
+    console.log(avgHR)
+
+    if(0 <= avgHR && avgHR <= 60){
+        return {
+            title: "Resting Zone", 
+            characterisitcs: "Below the typical resting heart rate for most adults. Indicative of a state of complete rest or minimal activity.",
+            PE:"Very minimal cardiovascular strain and energy expenditure. Ideal for recovery and tissue repair."
+        };
+    }
+    else if(60 < avgHR && avgHR <= 100){
+        return {
+            title: "Light Activity Zone", 
+            characterisitcs: " Slightly above resting levels, indicating a very low level of exertion.",
+            PE:"Slight increase in heart rate and breathing, low stress on the cardiovascular system. Useful for basic endurance and recovery."
+        };
+    }
+    else if(100 < avgHR && avgHR <= 140){
+        return {
+            title: "Moderate Activity Zone", 
+            characterisitcs: "Represents moderate-intensity exertion. Sustainable and comfortable for extended periods.",
+            PE:" Noticeable increase in breathing and sweating. Effective for general health improvements and weight management."
+        };
+    }
+    else if(140 < avgHR && avgHR <= 180){
+        return {
+            title: "Vigorous Activity Zone", 
+            characterisitcs: "High-intensity exertion, challenging and invigorating.",
+            PE:"Rapid breathing and heavy sweating, significant calorie burn. Enhances cardiovascular and respiratory health."
+
+        };
+    }
+    else if(181 <= avgHR){
+        return {
+            title: "Maximum Effort Zone", 
+            characterisitcs: "Near or at maximum heart rate capacity, typically sustainable only for brief periods.",
+            PE:"Extreme levels of exertion, high stress on the cardiovascular system. Improves speed and power in advanced fitness regimens.",
+        };
+    }
+
+}
+

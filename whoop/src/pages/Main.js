@@ -22,10 +22,10 @@ function Main() {
       const cookieWhoop = await cookies.get('whoopPerformance'); 
       setToken(cookieWhoop);
       if(token) {
-        setLoading(false);
         const last10Workouts = await getLastWorkouts(cookieWhoop);
         setWorkouts(last10Workouts.records);
         console.log(workouts)
+
         setLastWorkout(last10Workouts.records[0]);
         console.log(lastWorkout)
       } else {
@@ -34,6 +34,12 @@ function Main() {
     }
     init();
   }, []);
+
+  useEffect(() => {
+    if(workouts && lastWorkout){
+      setLoading(false);
+    }
+  }, [workouts, lastWorkout, token]);
 
 
   if(loading){
