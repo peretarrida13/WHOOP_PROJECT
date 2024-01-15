@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Box, CircularProgress } from "@mui/material";
 import Cookies from "universal-cookie";
 import { getWorkoutById } from '../Controllers/WorkoutController';
-import { getHRZoneText } from '../Utils/reportGenerator';
-import { getAverageHRInformation, getWorkoutType, parseIsoDateWithOffset } from '../Utils/performanceCalculator';
+import { getHRZoneText, getAverageHRInformation, parseIsoDateWithOffset, getStrainInformation, getCaloriesReport } from '../Utils/reportGenerator';
+import { getWorkoutType } from '../Utils/performanceCalculator';
 
 export default function Report() {  
     const [loading, setLoading] = useState(true);
@@ -13,6 +13,8 @@ export default function Report() {
     const [start, setStart] = useState(null);
     const [end, setEnd] = useState(null);
     const [AvgHRReport, setAvgHRReport] = useState({title: "", characterisitcs:"", PE:""});
+    const [strainReport, setStrainReport] = useState({title: "", text:""});
+    const [caloriesReport, setCaloriesReport] = useState({indication: "", goal:""});
     const cookies = new Cookies();
 
 
@@ -38,16 +40,21 @@ export default function Report() {
 
             const AHRReport = getAverageHRInformation(response.score.average_heart_rate);
             setAvgHRReport(AHRReport);
+
+            const SR = getStrainInformation(Math.floor(response.score.strain*100)/100);
+            setStrainReport(SR)
+            
+            const CR = getCaloriesReport(Math.floor(response.score.kilojoule*0.239006));
+            setCaloriesReport(CR);
         }
         getWorkout();
     }, []);
 
     useEffect(() => {
-        if(workout && heartRateMaxZone && sport && start && end && AvgHRReport){
-            console.log(workout);
+        if(workout && heartRateMaxZone && sport && start && end && AvgHRReport && strainReport){
             setLoading(false);
         }
-    },[workout, sport, start, end, heartRateMaxZone, AvgHRReport])
+    },[workout, heartRateMaxZone, sport, start, end, AvgHRReport, strainReport])
 
 
     if(loading){
@@ -69,18 +76,23 @@ export default function Report() {
             <div>
                 <h3><u>Key Data:</u></h3>
                 <h5>Strain: {Math.floor(workout.score.strain*10)/10}</h5>
-                <h5>Average HR: {workout.score.average_heart_rate} bpm</h5>
+                <p><b>{strainReport.title}</b></p>
+                <p>{strainReport.text}</p>
+                <h5>Average HR: {workout.score.average_heart_rate} bpm And Max HR: {workout.score.max_heart_rate} bpm</h5>
                 <p>{AvgHRReport.title}</p>
                 <ul>
                     <li><b>Characteristics: {AvgHRReport.characterisitcs}</b></li>
                     <li><b>Physiological Effects: {AvgHRReport.PE}</b></li>
                 </ul>
-                <h5>Max HR: {workout.score.max_heart_rate} bpm</h5>
                 <h5>Energy Expenditure: {Math.floor(workout.score.kilojoule*0.239006)} kcal</h5>
+                <ul>
+                    <li><b>Indication:</b> {caloriesReport.indication}</li>
+                    <li><b>Goal Alignment:</b> {caloriesReport.goal}</li>
+                </ul>
+                <h4>Specific Information:</h4>
                 <h5>Distance: {workout.score.distance_meter ? Math.floor(workout.score.distance_meter/10)/100 + ' km' : 'Not Recorded'}</h5>
                 <h5>Altitude Gain: {workout.score.altitude_gain_meter ? Math.floor(workout.score.altitude_gain_meter*100)/100+' meters' : 'Not Recorded'}</h5>
                 <h5>Altitude Change: {workout.score.altitude_change_meter ? Math.floor(workout.score.altitude_change_meter*100)/100+' meters' : 'Not Recorded'}</h5>
-
             </div>
             <div>
                 <h3><u>Heart Rate Zones:</u></h3>
