@@ -16,8 +16,8 @@ export default function LastPerformance({ workout }){
             setMaxHR(workout.score.max_heart_rate);
             setAvgHR(workout.score.average_heart_rate);
             setCalories(Math.floor(workout.score.kilojoule * 0.239006));
+            
             const sport = getWorkoutType(workout.sport_id);
-            console.log(sport)
             setType(sport);
         }
     },[])

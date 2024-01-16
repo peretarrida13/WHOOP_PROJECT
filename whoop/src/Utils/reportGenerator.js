@@ -152,8 +152,6 @@ export function getStrainInformation(strain){
 
 
 export function getAverageHRInformation(avgHR){
-    console.log(avgHR)
-
     if(0 <= avgHR && avgHR <= 60){
         return {
             title: "Resting Zone", 

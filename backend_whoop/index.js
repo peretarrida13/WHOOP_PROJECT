@@ -28,7 +28,7 @@ app.use(cookieParser());
 
 app.use(session({secret: process.env.CLIENT_SECRET, resave: true, saveUninitialized: true}))
 app.use(express.urlencoded({ extended: false }));
-
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 
 app.use(passport.initialize());

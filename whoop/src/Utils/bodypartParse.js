@@ -18,11 +18,10 @@ export const getMusclesFromWorkouts = (exercises) => {
             if(exercises[i].sport_id === workouts[j].id){
                 for(let k = 0; k < workouts[j].muscles.length; ++k){
                     const days = daysBetweenDates(exercises[i].created_at);
-
                     if(workouts[j].muscles[k].frequency - days <= 0){
                         workouts[j].muscles[k].frequency = 0;
                     } else{
-                        workouts[j].muscles[k].frequency -= days;
+                        workouts[j].muscles[k].frequency = workouts[j].muscles[k].frequency - days;
                     }
                     muscles.push(workouts[j].muscles[k]);
                 }

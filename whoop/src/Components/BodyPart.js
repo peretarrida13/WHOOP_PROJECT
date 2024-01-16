@@ -5,10 +5,6 @@ import { useEffect, useState } from 'react';
 import { getMusclesFromWorkouts } from '../Utils/bodypartParse';
 
 export default function BodyPart({ token }) {
-  const data = [
-    { muscles: ['chest'], frequency: 2 },
-    { muscles: ['triceps'], frequency: 1 },
-  ];
     const [sore, setSore] = useState([]);
     const [muscles, setMuscles] = useState([]);
 
@@ -41,14 +37,14 @@ export default function BodyPart({ token }) {
                     bodyColor='#16EC06'
                     data={sore}
                     style={{ width: '15rem', paddingRight: '10px'}}
-                    highlightedColors={['#16EC06', '#FFDE00', '#FF0026']}
+                    highlightedColors={['#d2d94c', '#FFDE00', '#FF0026']}
                 />
                 <Model
                     bodyColor='#16EC06'
                     type="posterior"
                     data={sore}
                     style={{ width: '15rem', paddingLeft: '10px' }}
-                    highlightedColors={['#16EC06', '#FFDE00', '#FF0026']}
+                    highlightedColors={['#d2d94c', '#FFDE00', '#FF0026']}
                 />
 
             </Box>

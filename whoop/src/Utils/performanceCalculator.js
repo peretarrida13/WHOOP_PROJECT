@@ -1,7 +1,6 @@
 import workouts from '../Exercises/Workout.json';
 
 export function calculatePerformance(workout){
-    console.log(workout);
     // Constants for maximum values (you need to set these based on your personal records)
     const MaxStrain = 21; // Example value
     const MaxCalories = 2000; // Example value
@@ -30,7 +29,6 @@ export function calculatePerformance(workout){
 }
 
 export function getWorkoutType(id){
-    console.log(id);
     for(let i = 0; i < workouts.length; ++i){
         if(workouts[i].id === id){
             return workouts[i].sport;

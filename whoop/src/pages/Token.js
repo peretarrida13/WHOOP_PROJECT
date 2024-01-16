@@ -5,7 +5,7 @@ export default function Token() {
     useEffect(() => {
         const cookies = new Cookies();
         const token = window.location.pathname.split('/')[1]
-        console.log(token)
+
         cookies.set('whoopPerformance', token, { path: '/' });
         window.location.href = '/';
     }, [])

@@ -8,26 +8,40 @@ import LastPerformance from "../Components/LastPerformance";
 import '../Components/scroll.css'
 import Cookies from "universal-cookie";
 import { getLastWorkouts } from "../Controllers/WorkoutController";
+import { getRefreshToken } from "../Controllers/RefreshTokenController";
 
 function Main() {
   const [loading, setLoading] = useState(true);
-  const [token, setToken] = useState('tok');
+  const [token, setToken] = useState(null);
   const [workouts, setWorkouts] = useState(null);
   const [lastWorkout, setLastWorkout] = useState(null);
   const cookies = new Cookies();
 
+  const getNewToken = async (token) => {
+    const newToken = getRefreshToken(token)
+    cookies.set('whoopPerformance', token, { path: '/' });
+    return newToken
+  }
 
   useEffect(() => {
     const init = async () => {
       const cookieWhoop = await cookies.get('whoopPerformance'); 
       setToken(cookieWhoop);
-      if(token) {
-        const last10Workouts = await getLastWorkouts(cookieWhoop);
-        setWorkouts(last10Workouts.records);
-        console.log(workouts)
+      if(cookieWhoop) {
+        try{
+          const last10Workouts = await getLastWorkouts(cookieWhoop);
+          setWorkouts(last10Workouts.records);
+          setLastWorkout(last10Workouts.records[0]);
+        } catch(err){
+          console.log(err)
+          const newToken = getNewToken(cookieWhoop);
 
-        setLastWorkout(last10Workouts.records[0]);
-        console.log(lastWorkout)
+          if(newToken === undefined || newToken === null){
+            window.location.href = '/login';  // redirect to login page
+          }
+
+          setToken(newToken);
+        }
       } else {
         window.location.href = '/login';  // redirect to login page
       }
@@ -36,9 +50,16 @@ function Main() {
   }, []);
 
   useEffect(() => {
-    if(workouts && lastWorkout){
-      setLoading(false);
+    const init = async () => {
+      if(workouts && lastWorkout){
+        setLoading(false);
+      } else{
+        const last10Workouts = await getLastWorkouts(token);
+        setWorkouts(last10Workouts?.records);
+        setLastWorkout(last10Workouts?.records[0]);
+      }
     }
+    init();
   }, [workouts, lastWorkout, token]);
 
 

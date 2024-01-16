@@ -80,62 +80,62 @@ export default function Report() {
     }
 
     return(
-        <div class="container">
+        <div className="container">
             <div>
                 <h3><u>Summary:</u></h3>
-                <p><b>Start Date And Time:</b> <span class="highlight">{start}</span> </p>
-                <p><b>End Date And Time:</b> <span class="highlight">{end}</span> </p>
-                <p><b>Sport:</b> <span class="highlight">{sport}</span></p>
+                <p><b>Start Date And Time:</b> <span className="highlight">{start}</span> </p>
+                <p><b>End Date And Time:</b> <span className="highlight">{end}</span> </p>
+                <p><b>Sport:</b> <span className="highlight">{sport}</span></p>
             </div>
             <div>
                 <h3><u>Key Data:</u></h3>
-                <p><b>Strain:</b> <span class="highlight">{Math.floor(workout.score.strain*10)/10}</span></p>
-                <p class="report-title">{strainReport.title}</p>
+                <p><b>Strain:</b> <span className="highlight">{Math.floor(workout.score.strain*10)/10}</span></p>
+                <p className="report-title">{strainReport.title}</p>
                 <p>{strainReport.text}</p>
-                <p><b>Average HR:</b> <span class="highlight">{workout.score.average_heart_rate}</span> bpm, <b>Max HR:</b> <span class="highlight">{workout.score.max_heart_rate}</span> bpm</p>
-                <p class="report-title">{AvgHRReport.title}</p>
+                <p><b>Average HR:</b> <span className="highlight">{workout.score.average_heart_rate}</span> bpm, <b>Max HR:</b> <span className="highlight">{workout.score.max_heart_rate}</span> bpm</p>
+                <p className="report-title">{AvgHRReport.title}</p>
                 <ul>
-                    <li><span class="highlight"><b>Characteristics:</b></span> {AvgHRReport.characterisitcs}</li>
-                    <li><span class="highlight"><b>Physiological Effects:</b></span> {AvgHRReport.PE}</li>
+                    <li><span className="highlight"><b>Characteristics:</b></span> {AvgHRReport.characterisitcs}</li>
+                    <li><span className="highlight"><b>Physiological Effects:</b></span> {AvgHRReport.PE}</li>
                 </ul>
-                <p><b>Energy Expenditure:</b> <span class="highlight">{Math.floor(workout.score.kilojoule*0.239006)}</span> kcal</p>
+                <p><b>Energy Expenditure:</b> <span className="highlight">{Math.floor(workout.score.kilojoule*0.239006)}</span> kcal</p>
                 <ul>
-                    <li><span class="highlight"><b>Indication:</b></span> {caloriesReport.indication}</li>
-                    <li><span class="highlight"><b>Goal Alignment</b>:</span> {caloriesReport.goal}</li>
+                    <li><span className="highlight"><b>Indication:</b></span> {caloriesReport.indication}</li>
+                    <li><span className="highlight"><b>Goal Alignment</b>:</span> {caloriesReport.goal}</li>
                 </ul>
                 <h4>Specific Information:</h4>
-                <p><b>Distance:</b> <span class="highlight">{workout.score.distance_meter ? Math.floor(workout.score.distance_meter/10)/100 + ' km' : 'Not Recorded'}</span></p>
-                <p><b>Altitude Gain:</b> <span class="highlight">{workout.score.altitude_gain_meter ? Math.floor(workout.score.altitude_gain_meter*100)/100+' meters' : 'Not Recorded'}</span></p>
-                <p><b>Altitude Change:</b> <span class="highlight">{workout.score.altitude_change_meter ? Math.floor(workout.score.altitude_change_meter*100)/100+' meters' : 'Not Recorded'}</span></p>
+                <p><b>Distance:</b> <span className="highlight">{workout.score.distance_meter ? Math.floor(workout.score.distance_meter/10)/100 + ' km' : 'Not Recorded'}</span></p>
+                <p><b>Altitude Gain:</b> <span className="highlight">{workout.score.altitude_gain_meter ? Math.floor(workout.score.altitude_gain_meter*100)/100+' meters' : 'Not Recorded'}</span></p>
+                <p><b>Altitude Change:</b> <span className="highlight">{workout.score.altitude_change_meter ? Math.floor(workout.score.altitude_change_meter*100)/100+' meters' : 'Not Recorded'}</span></p>
             </div>
             <div>
                 <h3><u>Heart Rate Zones:</u></h3>
                 <p>
                     Each of these heart rate zones, with their respective RPE levels, offers distinct benefits and training effects, from recovery and foundational endurance in the lower zones to peak performance and speed in the higher zones. Understanding and utilizing these zones can lead to a more effective and targeted training regimen, tailored to specific fitness goals and current levels of physical conditioning.
                 </p>
-                <p class="zone-title"><u>Heart Rate Zone Chart</u></p>
-                <div class="chart-container">
-                    <div class="doughnut-chart">
+                <p className="zone-title"><u>Heart Rate Zone Chart</u></p>
+                <div className="chart-container">
+                    <div className="doughnut-chart">
                         <Doughnut style={{height:500, width:500}} data={doughnutData} />
                     </div>
-                    <div class="zone-list">
+                    <div className="zone-list">
                         <ul>
-                            <li><span class="highlight">ZONE 0:</span> {msToHMS(HRzones.zone_zero_milli)}</li>
-                            <li><span class="highlight">ZONE 1:</span> {msToHMS(HRzones.zone_one_milli)}</li>
-                            <li><span class="highlight">ZONE 2:</span> {msToHMS(HRzones.zone_two_milli)}</li>
-                            <li><span class="highlight">ZONE 3:</span> {msToHMS(HRzones.zone_three_milli)}</li>
-                            <li><span class="highlight">ZONE 4:</span> {msToHMS(HRzones.zone_four_milli)}</li>
-                            <li><span class="highlight">ZONE 5:</span> {msToHMS(HRzones.zone_five_milli)}</li>
+                            <li><span className="highlight">ZONE 0:</span> {msToHMS(HRzones.zone_zero_milli)}</li>
+                            <li><span className="highlight">ZONE 1:</span> {msToHMS(HRzones.zone_one_milli)}</li>
+                            <li><span className="highlight">ZONE 2:</span> {msToHMS(HRzones.zone_two_milli)}</li>
+                            <li><span className="highlight">ZONE 3:</span> {msToHMS(HRzones.zone_three_milli)}</li>
+                            <li><span className="highlight">ZONE 4:</span> {msToHMS(HRzones.zone_four_milli)}</li>
+                            <li><span className="highlight">ZONE 5:</span> {msToHMS(HRzones.zone_five_milli)}</li>
                         </ul>
                     </div>
                 </div>
-                <p class="zone-title"><u>Heart Rate Zone Explanation</u></p>
-                <p class="report-title">{heartRateMaxZone.title}</p>
+                <p className="zone-title"><u>Heart Rate Zone Explanation</u></p>
+                <p className="report-title">{heartRateMaxZone.title}</p>
                 <p>{heartRateMaxZone.text}</p>
             </div>
             <div>
                 <h3><u>Recovery Tips:</u></h3>
-                <p class="report-title">{recoveryReport.title}</p>
+                <p className="report-title">{recoveryReport.title}</p>
                 <ul>
                     <li>{recoveryReport.rest}</li>
                     <li>{recoveryReport.nutrition}</li>

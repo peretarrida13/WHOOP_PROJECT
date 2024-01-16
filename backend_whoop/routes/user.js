@@ -6,6 +6,49 @@ const OAuth2Strategy = require('passport-oauth2')
 const User = require('../Models/User')
 require('dotenv').config()
 
+
+app.post('/refresh_token', async (req, res) => {
+    if(req.body.acessToken === undefined){
+        res.status(400).json({message: 'No acessToken'})
+        return
+    }
+
+    let userInfo = await User.findOne({acessToken: req.body.acessToken})
+
+    const refreshParams = {
+        grant_type: 'refresh_token',
+        client_id: process.env.CLIENT_ID,
+        client_secret: process.env.CLIENT_SECRET,
+        scope: 'offline',
+        refresh_token: userInfo.refreshToken,
+    }
+
+    const body = new URLSearchParams(refreshParams)
+    const headers = {
+        'Content-Type': 'application/x-www-form-urlencoded',
+    }
+
+    const refreshTokensResponse = await fetch(`https://api.prod.whoop.com/oauth/oauth2/token`,
+        {
+            body,
+            headers,
+            method: 'POST',
+        },
+    )
+
+    const refreshTokens = await refreshTokensResponse.json()
+
+    userInfo.acessToken = refreshTokens.access_token
+    userInfo.refreshToken = refreshTokens.refresh_token
+    userInfo.expiresIn = Date.now() + refreshTokens.expires_in * 1000
+
+    await userInfo.save()
+
+    res.status(200).json({accessToken: refreshTokens.access_token})
+})
+
+
+
 const whoopOAuthConfig = {
     authorizationURL: `${process.env.WHOOP_API_HOSTNAME}/oauth/oauth2/auth`,
     tokenURL: `${process.env.WHOOP_API_HOSTNAME}/oauth/oauth2/token`,
@@ -93,10 +136,8 @@ app.get('/auth/performance',
 app.get('/auth/performance/callback',
     passport.authenticate('oauth2', {failureRedirect: 'http://localhost:3000/login', failureMessage: true }),
 async function (req, res) {
-    console.log(req.user.acessToken)
     res.redirect('http://localhost:3000/' + req.user.acessToken );
 });
-
 
 
 module.exports = app;
