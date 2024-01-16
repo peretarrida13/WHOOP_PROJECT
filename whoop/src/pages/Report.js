@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Box, CircularProgress } from "@mui/material";
+import './Report.css'
 import Cookies from "universal-cookie";
 import { getWorkoutById } from '../Controllers/WorkoutController';
-import { getHRZoneText, getAverageHRInformation, parseIsoDateWithOffset, getStrainInformation, getCaloriesReport } from '../Utils/reportGenerator';
+import { getHRZoneText, getAverageHRInformation, parseIsoDateWithOffset, getStrainInformation, getCaloriesReport, createRecoveryTips, createDataChart, msToHMS } from '../Utils/reportGenerator';
 import { getWorkoutType } from '../Utils/performanceCalculator';
+import { Doughnut } from 'react-chartjs-2';
+import {Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js'
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function Report() {  
     const [loading, setLoading] = useState(true);
@@ -15,8 +19,10 @@ export default function Report() {
     const [AvgHRReport, setAvgHRReport] = useState({title: "", characterisitcs:"", PE:""});
     const [strainReport, setStrainReport] = useState({title: "", text:""});
     const [caloriesReport, setCaloriesReport] = useState({indication: "", goal:""});
+    const [recoveryReport, setRecoveryReport] = useState(null);
+    const [doughnutData, setDoughnutData] = useState({})
+    const [HRzones, setHRzones] = useState({})
     const cookies = new Cookies();
-
 
     useEffect(() => {
         const id = window.location.pathname.split('/')[2]
@@ -46,15 +52,23 @@ export default function Report() {
             
             const CR = getCaloriesReport(Math.floor(response.score.kilojoule*0.239006));
             setCaloriesReport(CR);
+
+            const RR = createRecoveryTips(response)
+            setRecoveryReport(RR);
+            
+            const data = createDataChart(response.score.zone_duration)
+            setDoughnutData(data)
+
+            setHRzones(response.score.zone_duration)
         }
         getWorkout();
     }, []);
 
     useEffect(() => {
-        if(workout && heartRateMaxZone && sport && start && end && AvgHRReport && strainReport){
+        if(workout && heartRateMaxZone && sport && start && end && AvgHRReport && strainReport && recoveryReport && doughnutData && HRzones){
             setLoading(false);
         }
-    },[workout, heartRateMaxZone, sport, start, end, AvgHRReport, strainReport])
+    },[workout, heartRateMaxZone, sport, start, end, AvgHRReport, strainReport, recoveryReport, doughnutData, HRzones])
 
 
     if(loading){
@@ -66,47 +80,70 @@ export default function Report() {
     }
 
     return(
-        <div>
+        <div class="container">
             <div>
                 <h3><u>Summary:</u></h3>
-                <h5>Start Date And Time: {start} </h5>
-                <h5>End Date And Time: {end} </h5>
-                <h5>Sport: {sport}</h5>
+                <p><b>Start Date And Time:</b> <span class="highlight">{start}</span> </p>
+                <p><b>End Date And Time:</b> <span class="highlight">{end}</span> </p>
+                <p><b>Sport:</b> <span class="highlight">{sport}</span></p>
             </div>
             <div>
                 <h3><u>Key Data:</u></h3>
-                <h5>Strain: {Math.floor(workout.score.strain*10)/10}</h5>
-                <p><b>{strainReport.title}</b></p>
+                <p><b>Strain:</b> <span class="highlight">{Math.floor(workout.score.strain*10)/10}</span></p>
+                <p class="report-title">{strainReport.title}</p>
                 <p>{strainReport.text}</p>
-                <h5>Average HR: {workout.score.average_heart_rate} bpm And Max HR: {workout.score.max_heart_rate} bpm</h5>
-                <p>{AvgHRReport.title}</p>
+                <p><b>Average HR:</b> <span class="highlight">{workout.score.average_heart_rate}</span> bpm, <b>Max HR:</b> <span class="highlight">{workout.score.max_heart_rate}</span> bpm</p>
+                <p class="report-title">{AvgHRReport.title}</p>
                 <ul>
-                    <li><b>Characteristics: {AvgHRReport.characterisitcs}</b></li>
-                    <li><b>Physiological Effects: {AvgHRReport.PE}</b></li>
+                    <li><span class="highlight"><b>Characteristics:</b></span> {AvgHRReport.characterisitcs}</li>
+                    <li><span class="highlight"><b>Physiological Effects:</b></span> {AvgHRReport.PE}</li>
                 </ul>
-                <h5>Energy Expenditure: {Math.floor(workout.score.kilojoule*0.239006)} kcal</h5>
+                <p><b>Energy Expenditure:</b> <span class="highlight">{Math.floor(workout.score.kilojoule*0.239006)}</span> kcal</p>
                 <ul>
-                    <li><b>Indication:</b> {caloriesReport.indication}</li>
-                    <li><b>Goal Alignment:</b> {caloriesReport.goal}</li>
+                    <li><span class="highlight"><b>Indication:</b></span> {caloriesReport.indication}</li>
+                    <li><span class="highlight"><b>Goal Alignment</b>:</span> {caloriesReport.goal}</li>
                 </ul>
                 <h4>Specific Information:</h4>
-                <h5>Distance: {workout.score.distance_meter ? Math.floor(workout.score.distance_meter/10)/100 + ' km' : 'Not Recorded'}</h5>
-                <h5>Altitude Gain: {workout.score.altitude_gain_meter ? Math.floor(workout.score.altitude_gain_meter*100)/100+' meters' : 'Not Recorded'}</h5>
-                <h5>Altitude Change: {workout.score.altitude_change_meter ? Math.floor(workout.score.altitude_change_meter*100)/100+' meters' : 'Not Recorded'}</h5>
+                <p><b>Distance:</b> <span class="highlight">{workout.score.distance_meter ? Math.floor(workout.score.distance_meter/10)/100 + ' km' : 'Not Recorded'}</span></p>
+                <p><b>Altitude Gain:</b> <span class="highlight">{workout.score.altitude_gain_meter ? Math.floor(workout.score.altitude_gain_meter*100)/100+' meters' : 'Not Recorded'}</span></p>
+                <p><b>Altitude Change:</b> <span class="highlight">{workout.score.altitude_change_meter ? Math.floor(workout.score.altitude_change_meter*100)/100+' meters' : 'Not Recorded'}</span></p>
             </div>
             <div>
                 <h3><u>Heart Rate Zones:</u></h3>
                 <p>
                     Each of these heart rate zones, with their respective RPE levels, offers distinct benefits and training effects, from recovery and foundational endurance in the lower zones to peak performance and speed in the higher zones. Understanding and utilizing these zones can lead to a more effective and targeted training regimen, tailored to specific fitness goals and current levels of physical conditioning.
                 </p>
-                <h5><u>Heart Rate Zone Chart</u></h5>
-                <h5><u>Heart Rate Zone Explenation</u></h5>
-                <h6>{heartRateMaxZone.title}</h6>
+                <p class="zone-title"><u>Heart Rate Zone Chart</u></p>
+                <div class="chart-container">
+                    <div class="doughnut-chart">
+                        <Doughnut style={{height:500, width:500}} data={doughnutData} />
+                    </div>
+                    <div class="zone-list">
+                        <ul>
+                            <li><span class="highlight">ZONE 0:</span> {msToHMS(HRzones.zone_zero_milli)}</li>
+                            <li><span class="highlight">ZONE 1:</span> {msToHMS(HRzones.zone_one_milli)}</li>
+                            <li><span class="highlight">ZONE 2:</span> {msToHMS(HRzones.zone_two_milli)}</li>
+                            <li><span class="highlight">ZONE 3:</span> {msToHMS(HRzones.zone_three_milli)}</li>
+                            <li><span class="highlight">ZONE 4:</span> {msToHMS(HRzones.zone_four_milli)}</li>
+                            <li><span class="highlight">ZONE 5:</span> {msToHMS(HRzones.zone_five_milli)}</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="zone-title"><u>Heart Rate Zone Explanation</u></p>
+                <p class="report-title">{heartRateMaxZone.title}</p>
                 <p>{heartRateMaxZone.text}</p>
             </div>
             <div>
                 <h3><u>Recovery Tips:</u></h3>
-            </div>
+                <p class="report-title">{recoveryReport.title}</p>
+                <ul>
+                    <li>{recoveryReport.rest}</li>
+                    <li>{recoveryReport.nutrition}</li>
+                    <li>{recoveryReport.hydratation}</li>
+                    <li>{recoveryReport.mental}</li>
+                </ul>
+            </div> 
+            <p>All the information above is not 100% medical, for medical advice contact a doctor</p>
         </div>
     )
 }

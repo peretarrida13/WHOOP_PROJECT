@@ -1,3 +1,5 @@
+import { calculatePerformance } from "./performanceCalculator";
+
 export function getHRZoneText(workout){
     const maxZone = getMaxHRZone(workout.score.zone_duration);
     
@@ -219,4 +221,89 @@ export function getCaloriesReport(calories){
             goal: "Aligns with professional or semi-professional athletic training, extreme endurance events preparation, and intensive fitness challenges."
         };
     }
+}
+
+
+export function createRecoveryTips(workout){
+    const performance = calculatePerformance(workout)    
+
+    if(0 <= performance && performance <=2){
+        return{
+            title:"High Fatigue / Low Performance",
+            rest:"Prioritize Sleep: Aim for 8-10 hours of quality sleep to facilitate muscle repair and cognitive recovery",
+            hydratation:"Hydration: Ensure adequate fluid intake to help with recovery processes.",
+            mental:"Mental Rest: Engage in stress-reducing activities like meditation or light reading.",
+            nutrition:"Nutrition: Emphasize foods rich in protein, healthy fats, and antioxidants to support muscle repair and reduce inflammation."
+        }
+    } else if(2 < performance && performance <= 4){
+        return{
+            title:"Moderate to Low Performance",
+            rest:"Sufficient Rest: Aim for 7-9 hours of sleep per night.",
+            hydratation:"Stay Hydrated: Drink water and fluids regularly.",
+            mental:"Stress Management: Practice relaxation techniques to manage stress.",
+            nutrition:"Balanced Diet: Include a variety of nutrients in your diet, focusing on a good balance of carbohydrates, proteins, and fats."
+        }
+    } else if(4 < performance && performance <= 6){
+        return{
+            title:"Average Performance",
+            rest:"Regular Sleep Patterns: Maintain a consistent sleep schedule with 7-8 hours of sleep.",
+            hydratation:"Hydration: Keep up with regular fluid intake.",
+            mental:"Mental Wellness: Balance workout routines with leisure activities for mental health.",
+            nutrition:"Nutritional Support: Eat a well-balanced diet, with a focus on whole foods."
+        }
+    } else if(6 < performance && performance <= 8){
+        return{
+            title:"Good Performance",
+            rest:"Consistent Sleep: Ensure consistent sleep patterns with adequate rest.",
+            hydratation:"Adequate Hydration: Monitor hydration, especially around workout times.",
+            mental:"Balance: Maintain a balance between training, rest, and recreational activities.",
+            nutrition:"Nutrition: Focus on nutrient-dense foods to support higher levels of activity."
+        }
+    } else if(8 < performance && performance <= 10){
+        return{
+            title:"High Performance",
+            rest:"Optimal Sleep: Prioritize sleep for recovery, aiming for at least 8 hours.",
+            hydratation:"Monitor Hydration: Pay close attention to hydration, especially during and after workouts.",
+            mental:"Recovery Techniques: Utilize advanced recovery techniques like massage, cold therapy, or compression garments if needed.",
+            nutrition:"Specialized Nutrition: Tailor your diet to meet the demands of high-intensity workouts."
+        }
+    }
+}
+
+export function createDataChart(heartRateZones){
+    const totalMs = heartRateZones.zone_zero_milli + heartRateZones.zone_one_milli + heartRateZones.zone_two_milli + heartRateZones.zone_three_milli + heartRateZones.zone_four_milli + heartRateZones.zone_five_milli;
+
+    const zone0 = Math.floor(heartRateZones.zone_zero_milli/totalMs*100);
+    const zone1 = Math.floor(heartRateZones.zone_one_milli/totalMs*100);
+    const zone2 = Math.floor(heartRateZones.zone_two_milli/totalMs*100);
+    const zone3 = Math.floor(heartRateZones.zone_three_milli/totalMs*100);
+    const zone4 = Math.floor(heartRateZones.zone_four_milli/totalMs*100);
+    const zone5 = Math.floor(heartRateZones.zone_five_milli/totalMs*100);
+    return {
+        labels: ['ZONE 0', 'ZONE 1', 'ZONE 2', 'ZONE 3', 'ZONE 4', 'ZONE 5'],
+        datasets: [
+          {
+            label: '% Of Time In this Zone',
+            data: [zone0, zone1, zone2, zone3, zone4, zone5],
+            backgroundColor: [
+              '#ACC4D0',
+              '#B0C2CE',
+              '#489CC2',
+              '#55B998',
+              '#FBAC5E',
+              '#FE6522',
+            ],
+          },
+        ],
+    };
+}
+
+export function msToHMS(milliseconds) {
+    let seconds = Math.floor(milliseconds / 1000);
+    let hours = Math.floor(seconds / 3600);
+    seconds %= 3600;
+    let minutes = Math.floor(seconds / 60);
+    seconds %= 60;
+
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 }
