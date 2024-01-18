@@ -9,11 +9,15 @@ require('dotenv').config()
 
 app.post('/refresh_token', async (req, res) => {
     if(req.body.acessToken === undefined){
-        res.status(400).json({message: 'No acessToken'})
+        res.status(401).json({message: 'No acessToken'})
         return
     }
 
     let userInfo = await User.findOne({acessToken: req.body.acessToken})
+    if(userInfo === null){
+        res.status(404).json({message: 'User not found'})
+        return
+    }
 
     const refreshParams = {
         grant_type: 'refresh_token',
@@ -41,6 +45,8 @@ app.post('/refresh_token', async (req, res) => {
     userInfo.acessToken = refreshTokens.access_token
     userInfo.refreshToken = refreshTokens.refresh_token
     userInfo.expiresIn = Date.now() + refreshTokens.expires_in * 1000
+
+    console.log(userInfo)
 
     await userInfo.save()
 

@@ -1,20 +1,25 @@
 export async function getLastWorkouts(accessToken){
-    const query = new URLSearchParams({
-        limit: "10",
-    });
+    try{
+        const query = new URLSearchParams({
+            limit: "10",
+        });
 
-    const uri = `https://api.prod.whoop.com/developer/v1/activity/workout?${query}`
+        const uri = `https://api.prod.whoop.com/developer/v1/activity/workout?${query}`
 
-    const response = await fetch(uri, {
-        method: 'GET',
-        headers: {
-            Authorization: `Bearer ${accessToken}`
+        const response = await fetch(uri, {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        });
+
+        if(response.status === 200){
+            const data = await response.json();
+            return data;
         }
-    });
-
-    if(response.status === 200){
-        const data = await response.json();
-        return data;
+    } catch(err){
+        console.log(err)
+        throw err;
     }
 }
 

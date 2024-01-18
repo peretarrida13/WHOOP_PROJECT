@@ -18,7 +18,7 @@ function Main() {
   const cookies = new Cookies();
 
   const getNewToken = async (token) => {
-    const newToken = getRefreshToken(token)
+    const newToken = await getRefreshToken(token)
     cookies.set('whoopPerformance', token, { path: '/' });
     return newToken
   }
@@ -33,11 +33,15 @@ function Main() {
           setWorkouts(last10Workouts.records);
           setLastWorkout(last10Workouts.records[0]);
         } catch(err){
-          console.log(err)
-          const newToken = getNewToken(cookieWhoop);
+          const newToken = await getNewToken(cookieWhoop);
+          console.log(newToken)
 
           if(newToken === undefined || newToken === null){
             window.location.href = '/login';  // redirect to login page
+          } else{
+            const last10Workouts = await getLastWorkouts(newToken);
+            setWorkouts(last10Workouts.records);
+            setLastWorkout(last10Workouts.records[0]);
           }
 
           setToken(newToken);
@@ -53,10 +57,6 @@ function Main() {
     const init = async () => {
       if(workouts && lastWorkout){
         setLoading(false);
-      } else{
-        const last10Workouts = await getLastWorkouts(token);
-        setWorkouts(last10Workouts?.records);
-        setLastWorkout(last10Workouts?.records[0]);
       }
     }
     init();

@@ -45,6 +45,7 @@ passport.deserializeUser(function(user, done) {
 app.use(cors());
 
 app.use('/api', require('./routes/user.js'));
+app.use('/api', require('./routes/illness.js'));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
