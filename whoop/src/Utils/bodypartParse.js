@@ -18,12 +18,25 @@ export const getMusclesFromWorkouts = (exercises) => {
             if(exercises[i].sport_id === workouts[j].id){
                 for(let k = 0; k < workouts[j].muscles.length; ++k){
                     const days = daysBetweenDates(exercises[i].created_at);
-                    if(workouts[j].muscles[k].frequency - days <= 0){
+                    /*if(workouts[j].muscles[k].frequency - days <= 0){
                         workouts[j].muscles[k].frequency = 0;
                     } else{
                         workouts[j].muscles[k].frequency = workouts[j].muscles[k].frequency - days;
+                        console.log(workouts[j].muscles[k].frequency);
                     }
-                    muscles.push(workouts[j].muscles[k]);
+                    muscles.push(workouts[j].muscles[k]);*/
+                    console.log(days)
+                    if(days === 0 || days === 1){
+                        workouts[j].muscles[k].frequency = 3;
+                    } else if(days === 2){
+                        workouts[j].muscles[k].frequency = 2;
+                    } else if(days === 3){
+                        workouts[j].muscles[k].frequency = 1;
+                    } else{
+                        workouts[j].muscles[k].frequency = 0;
+                    }
+                    
+                    if(shouldAdd(workouts[j].muscles[k], muscles))muscles.push(workouts[j].muscles[k]);
                 }
             }
         }
@@ -32,4 +45,15 @@ export const getMusclesFromWorkouts = (exercises) => {
   
     
     return muscles;
+}
+
+function shouldAdd(data, array){
+    for(let index of array){
+        if(index.muscles[0] === data.muscles[0]){
+            if(data.frequency > index.frequency) return true
+            else return false;
+        }
+    }
+
+    return true;
 }
