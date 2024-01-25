@@ -1,4 +1,5 @@
 import { Button, Card, CardContent, Typography } from "@mui/material";
+import '../Styles.css'
 
 export default function NotFound() {
     return(
@@ -8,16 +9,22 @@ export default function NotFound() {
                     <Typography 
                         variant="h3"
                         fontWeight={700}
+                        className="headline"
                     >
                         404 - Page not found
                     </Typography>
                     <Typography 
                         variant="h6"
                         fontWeight={700}
+                        className="body-text"
                     >
                         Sorry, the page you are looking for does not exist. &#128542;
                     </Typography>
-                    <Button href='/' variant="contained" style={{backgroundColor:'#00F19F', marginTop:20}}>Return Home</Button>
+                    <Button href='/' variant="contained" style={{backgroundColor:'#00F19F', marginTop:20}}>
+                        <p className="headline">
+                            Return Home
+                        </p>
+                    </Button>
                 </CardContent>
             </Card>
         </div>

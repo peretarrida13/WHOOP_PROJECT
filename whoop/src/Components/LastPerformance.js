@@ -23,20 +23,24 @@ export default function LastPerformance({ workout }){
     },[])
 
     return(
-        <div style={{paddingLeft:20, paddingRight:20, color:'#00F19F'}}>
-            <h1 style={{textAlign:'center'}}>Last Performance</h1>
+        <div style={{
+            paddingLeft:20, paddingRight:20, 
+            color:'#00F19F', backgroundColor:'transparent'
+        }}>
+            <h1 className='headline' style={{textAlign:'center'}}>Last Performance</h1>
             <div  style={{
                 width:'100%', 
                 textAlign:'center',
                 justifyContent:'center'}}
+                className='body-text'
             >
                 The last Exercise you did was a <b><u>{type}</u></b> workout.  After the review <br/> this are the numbers
             </div>
             <div>
                 <ul>
-                    <li>Max HR: {maxHR} bpm</li>
-                    <li>Avg HR: {avgHR} bpm</li>
-                    <li>Calories: {calories} kcal</li>
+                    <li className='body-text'>Max HR: <span className='numbers'>{maxHR} bpm</span></li>
+                    <li className='body-text'>Avg HR: <span className='numbers'>{avgHR} bpm</span></li>
+                    <li className='body-text'>Calories: <span className='numbers'>{calories} kcal</span></li>
                 </ul>
             </div>
             <div style={{textAlign:'center', marginBottom:10, width:'100%'}}>
@@ -45,9 +49,9 @@ export default function LastPerformance({ workout }){
                     fontFamily={"Helvetica"}
                     align="center"
                     fontWeight={'bold'}
-
+                    className='body-text'
                 >
-                    PERFORMANCE: {performance}/10
+                    PERFORMANCE: <span className='numbers'>{performance}</span>/10
                 </Typography>
             </div>
         </div>

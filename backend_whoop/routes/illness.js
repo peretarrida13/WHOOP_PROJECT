@@ -4,14 +4,13 @@ const app = express.Router()
 const formalitzar = require('../Utils/formalitzar')
 const detection = require('../Utils/detection')
 require('dotenv').config()
-
+  
 
 app.get('/illness/:token', async (req, res) => {
     const token = req.params.token
-
     const query = new URLSearchParams({
         limit: "14",
-    });
+    }); 
 
 
     const resp1 = await fetch(`https://api.prod.whoop.com/developer/v1/activity/sleep?${query}`, {
@@ -26,7 +25,7 @@ app.get('/illness/:token', async (req, res) => {
         headers: {
             'Authorization': `Bearer ${token}`
         }
-    })
+    })  
     
     const recoveryData = await resp2.json();
 
@@ -34,7 +33,7 @@ app.get('/illness/:token', async (req, res) => {
 
     const result = detection.detection(data)
 
-    res.status(result.status).json({message: result.message, data: result.data});
+    res.status(200).json({data: result});
 })
 
 

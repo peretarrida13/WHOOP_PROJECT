@@ -46,8 +46,6 @@ app.post('/refresh_token', async (req, res) => {
     userInfo.refreshToken = refreshTokens.refresh_token
     userInfo.expiresIn = Date.now() + refreshTokens.expires_in * 1000
 
-    console.log(userInfo)
-
     await userInfo.save()
 
     res.status(200).json({accessToken: refreshTokens.access_token})
@@ -142,7 +140,7 @@ app.get('/auth/performance',
 app.get('/auth/performance/callback',
     passport.authenticate('oauth2', {failureRedirect: 'http://localhost:3000/login', failureMessage: true }),
 async function (req, res) {
-    res.redirect('http://localhost:3000/' + req.user.acessToken );
+    res.redirect('http://localhost:3000/token/' + req.user.acessToken );
 });
 
 

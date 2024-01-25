@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box, CircularProgress } from "@mui/material";
-import './Report.css'
+import '../Styles.css'
 import Cookies from "universal-cookie";
 import { getWorkoutById } from '../Controllers/WorkoutController';
 import { getHRZoneText, getAverageHRInformation, parseIsoDateWithOffset, getStrainInformation, getCaloriesReport, createRecoveryTips, createDataChart, msToHMS } from '../Utils/reportGenerator';
@@ -82,68 +82,68 @@ export default function Report() {
     return(
         <div className="container">
             <div>
-                <h3><u>Summary:</u></h3>
-                <p><b>Start Date And Time:</b> <span className="highlight">{start}</span> </p>
-                <p><b>End Date And Time:</b> <span className="highlight">{end}</span> </p>
-                <p><b>Sport:</b> <span className="highlight">{sport}</span></p>
+                <h3 className='headline'><u>Summary:</u></h3>
+                <p className='body-text'><b>Start Date And Time:</b> <span className="highlight numbers">{start}</span> </p>
+                <p className='body-text'><b>End Date And Time:</b> <span className="highlight numbers">{end}</span> </p>
+                <p className='body-text'><b>Sport:</b> <span className="highlight">{sport}</span></p>
             </div>
             <div>
-                <h3><u>Key Data:</u></h3>
-                <p><b>Strain:</b> <span className="highlight">{Math.floor(workout.score.strain*10)/10}</span></p>
-                <p className="report-title">{strainReport.title}</p>
-                <p>{strainReport.text}</p>
-                <p><b>Average HR:</b> <span className="highlight">{workout.score.average_heart_rate}</span> bpm, <b>Max HR:</b> <span className="highlight">{workout.score.max_heart_rate}</span> bpm</p>
-                <p className="report-title">{AvgHRReport.title}</p>
+                <h3 className='headline'><u>Key Data:</u></h3>
+                <p className='body-text'><b>Strain:</b> <span className="numbers">{Math.floor(workout.score.strain*10)/10}</span></p>
+                <p className="report-title headline">{strainReport.title}</p>
+                <p className='body-text'>{strainReport.text}</p>
+                <p className='body-text'><b>Average HR:</b> <span className="numbers">{workout.score.average_heart_rate}</span> bpm, <b>Max HR:</b> <span className="numbers">{workout.score.max_heart_rate}</span> bpm</p>
+                <p className="report-title headline">{AvgHRReport.title}</p>
                 <ul>
-                    <li><span className="highlight"><b>Characteristics:</b></span> {AvgHRReport.characterisitcs}</li>
-                    <li><span className="highlight"><b>Physiological Effects:</b></span> {AvgHRReport.PE}</li>
+                    <li className='body-text'><span className="highlight"><b>Characteristics:</b></span> <span>{AvgHRReport.characterisitcs}</span></li>
+                    <li className='body-text'><span className="highlight"><b>Physiological Effects:</b></span> {AvgHRReport.PE}</li>
                 </ul>
-                <p><b>Energy Expenditure:</b> <span className="highlight">{Math.floor(workout.score.kilojoule*0.239006)}</span> kcal</p>
+                <p className='body-text'><b>Energy Expenditure:</b> <span className="highlight numbers">{Math.floor(workout.score.kilojoule*0.239006)}</span> kcal</p>
                 <ul>
-                    <li><span className="highlight"><b>Indication:</b></span> {caloriesReport.indication}</li>
-                    <li><span className="highlight"><b>Goal Alignment</b>:</span> {caloriesReport.goal}</li>
+                    <li className='body-text'><span className="highlight"><b>Indication:</b></span> {caloriesReport.indication}</li>
+                    <li className='body-text'><span className="highlight"><b>Goal Alignment</b>:</span> {caloriesReport.goal}</li>
                 </ul>
-                <h4>Specific Information:</h4>
-                <p><b>Distance:</b> <span className="highlight">{workout.score.distance_meter ? Math.floor(workout.score.distance_meter/10)/100 + ' km' : 'Not Recorded'}</span></p>
-                <p><b>Altitude Gain:</b> <span className="highlight">{workout.score.altitude_gain_meter ? Math.floor(workout.score.altitude_gain_meter*100)/100+' meters' : 'Not Recorded'}</span></p>
-                <p><b>Altitude Change:</b> <span className="highlight">{workout.score.altitude_change_meter ? Math.floor(workout.score.altitude_change_meter*100)/100+' meters' : 'Not Recorded'}</span></p>
+                <h4 className='headline'>Specific Information:</h4>
+                <p className='body-text'><b>Distance:</b> <span className="highligh numbers">{workout.score.distance_meter ? Math.floor(workout.score.distance_meter/10)/100 + ' km' : 'Not Recorded'}</span></p>
+                <p className='body-text'><b>Altitude Gain:</b> <span className="highlight numbers">{workout.score.altitude_gain_meter ? Math.floor(workout.score.altitude_gain_meter*100)/100+' meters' : 'Not Recorded'}</span></p>
+                <p className='body-text'><b>Altitude Change:</b> <span className="highlight numbers">{workout.score.altitude_change_meter ? Math.floor(workout.score.altitude_change_meter*100)/100+' meters' : 'Not Recorded'}</span></p>
             </div>
             <div>
-                <h3><u>Heart Rate Zones:</u></h3>
-                <p>
+                <h3 className='headline'><u>Heart Rate Zones:</u></h3>
+                <p className='body-text'> 
                     Each of these heart rate zones, with their respective RPE levels, offers distinct benefits and training effects, from recovery and foundational endurance in the lower zones to peak performance and speed in the higher zones. Understanding and utilizing these zones can lead to a more effective and targeted training regimen, tailored to specific fitness goals and current levels of physical conditioning.
                 </p>
-                <p className="zone-title"><u>Heart Rate Zone Chart</u></p>
+                <p className="zone-title headline"><u>Heart Rate Zone Chart</u></p>
                 <div className="chart-container">
                     <div className="doughnut-chart">
                         <Doughnut style={{height:500, width:500}} data={doughnutData} />
                     </div>
                     <div className="zone-list">
                         <ul>
-                            <li><span className="highlight">ZONE 0:</span> {msToHMS(HRzones.zone_zero_milli)}</li>
-                            <li><span className="highlight">ZONE 1:</span> {msToHMS(HRzones.zone_one_milli)}</li>
-                            <li><span className="highlight">ZONE 2:</span> {msToHMS(HRzones.zone_two_milli)}</li>
-                            <li><span className="highlight">ZONE 3:</span> {msToHMS(HRzones.zone_three_milli)}</li>
-                            <li><span className="highlight">ZONE 4:</span> {msToHMS(HRzones.zone_four_milli)}</li>
-                            <li><span className="highlight">ZONE 5:</span> {msToHMS(HRzones.zone_five_milli)}</li>
+                            <li className='body-text'><span className="highlight">ZONE 0:</span> <span className='numbers'>{msToHMS(HRzones.zone_zero_milli)}</span></li>
+                            <li className='body-text'><span className="highlight">ZONE 1:</span> <span className='numbers'>{msToHMS(HRzones.zone_one_milli)}</span></li>
+                            <li className='body-text'><span className="highlight">ZONE 2:</span> <span className='numbers'>{msToHMS(HRzones.zone_two_milli)}</span></li>
+                            <li className='body-text'><span className="highlight">ZONE 3:</span> <span className='numbers'>{msToHMS(HRzones.zone_three_milli)}</span></li>
+                            <li className='body-text'><span className="highlight">ZONE 4:</span> <span className='numbers'>{msToHMS(HRzones.zone_four_milli)}</span></li>
+                            <li className='body-text'><span className="highlight">ZONE 5:</span> <span className='numbers'>{msToHMS(HRzones.zone_five_milli)}</span></li>
                         </ul>
                     </div>
                 </div>
-                <p className="zone-title"><u>Heart Rate Zone Explanation</u></p>
-                <p className="report-title">{heartRateMaxZone.title}</p>
-                <p>{heartRateMaxZone.text}</p>
+                <p className="zone-title headline"><u>Heart Rate Zone Explanation</u></p>
+                <p className="report-title body-text">{heartRateMaxZone.title}</p>
+                <p className='body-text'>{heartRateMaxZone.text}</p>
             </div>
             <div>
-                <h3><u>Recovery Tips:</u></h3>
+                <h3 className='headline'><u>Recovery Tips:</u></h3>
                 <p className="report-title">{recoveryReport.title}</p>
                 <ul>
-                    <li>{recoveryReport.rest}</li>
-                    <li>{recoveryReport.nutrition}</li>
-                    <li>{recoveryReport.hydratation}</li>
-                    <li>{recoveryReport.mental}</li>
+                    <li className='body-text'>{recoveryReport.rest}</li>
+                    <li className='body-text'>{recoveryReport.nutrition}</li>
+                    <li className='body-text'>{recoveryReport.hydratation}</li>
+                    <li className='body-text'>{recoveryReport.mental}</li>
                 </ul>
             </div> 
-            <p>All the information above is not 100% medical, for medical advice contact a doctor</p>
+            <p className='headline' style={{textAlign:'center', marginTop:50}}><u>All the information above is not 100% medical, for medical advice contact a doctor</u></p>
         </div>
     )
 }

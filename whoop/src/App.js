@@ -6,42 +6,40 @@ import NotFound from "./pages/NotFound";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Navbar from "./Components/Navbar";
-import { useState } from "react";
 import Token from "./pages/Token";
 
 const darkTheme = createTheme({
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body:{
+          background: 'linear-gradient(#283339, #101518)',
+          backgroundRepeat: "no-repeat",
+          backgroundAttachment: "fixed",
+        }
+      }
+    }
+  },
   palette: {
     mode: 'dark',
   },
-});
-
-const lightTheme = createTheme({
-  palette: {
-    mode: 'light',
-  },
+  typography:{
+    color:'#00F19F'
+  }
 });
 
 function App() {
-  const [theme, setTheme] = useState(darkTheme);
 
-  const changeTheme = () => {
-    if(theme === darkTheme) {
-      setTheme(lightTheme);
-    } else {
-      setTheme(darkTheme);
-    }
-  }
-  
   return (
     <div>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={darkTheme}>
         <CssBaseline />
-        <Navbar setTheme={changeTheme} theme={theme}/>
+        <Navbar/>
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/login" element={<LogIn />} /> 
           <Route path="/report/:id" element={<Report />} />
-          <Route path="/:token" element={<Token />} />
+          <Route path="/token/:token" element={<Token />} />
           <Route path="*" element={<NotFound/>} />
         </Routes>
       </ThemeProvider>

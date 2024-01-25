@@ -27,6 +27,9 @@ export default function RecoveryStrain({ token }){
     
     useEffect(() => {
         getRecoveryAndStrain();
+    }, []);
+
+    useEffect(() => {
         if(recovery <=33 ){
             setRecoveryColor('#FF0026');  
         } else if(recovery > 33 && recovery <= 66){
@@ -34,14 +37,14 @@ export default function RecoveryStrain({ token }){
         } else{
             setRecoveryColor('#16EC06');  
         }
-    }, []);
+    }, [recovery, strain, HRV, calories]);
 
     return(
-        <div style={{display:'grid', color:'#00F19F'}}>
+        <div style={{display:'grid', color:'#00F19F', backgroundColor:'transparent'}}>
             <div style={{gridColumnStart:1, gridColumnEnd:2, textAlign:'center', marginTop:20, }}>
                 <ul style={{listStyleType:'none', textAlign:'right', marginTop:80, position:'relative', left:10}}>
-                    <li style={{fontWeight:'bold'}}>Recovery: {recovery}%</li>
-                    <li style={{fontWeight:'bold'}}>Strain: {strain}</li>
+                    <li className='body-text'>Recovery: <span className='numbers'>{recovery}%</span></li>
+                    <li className='body-text'>Strain: <span className='numbers'>{strain}</span></li>
                 </ul>
             </div>
             <div style={{gridColumnStart:2, gridColumnEnd:3, position:'relative', top:75, left:40}}>
@@ -50,8 +53,8 @@ export default function RecoveryStrain({ token }){
             </div>
             <div style={{gridColumnStart:3, gridColumnEnd:4}}>
                 <ul style={{listStyleType:'none', textAlign:'left', top:84, position:'relative', right:50}}>
-                    <li style={{fontWeight:'bold'}}>HRV: {HRV} ms</li>
-                    <li style={{fontWeight:'bold'}}>Calories: {calories} kcal</li>
+                    <li className='body-text'>HRV:<span className='numbers'>{HRV} ms</span></li>
+                    <li className='body-text'>Calories: <span className='numbers'>{calories} kcal</span></li>
                 </ul>
             </div>
         </div>

@@ -23,6 +23,19 @@ function Main() {
     return newToken
   }
 
+  const saveToken = async (cookieWhoop) => {
+    const newToken = await getNewToken(cookieWhoop);
+    await setToken(newToken);
+    
+    if(newToken === undefined || newToken === null){
+      window.location.href = '/login';  // redirect to login page
+    } else{
+      const last10Workouts = await getLastWorkouts(newToken);
+      setWorkouts(last10Workouts.records);
+      setLastWorkout(last10Workouts.records[0]);
+    }
+  }
+
   useEffect(() => {
     const init = async () => {
       const cookieWhoop = await cookies.get('whoopPerformance'); 
@@ -33,18 +46,7 @@ function Main() {
           setWorkouts(last10Workouts.records);
           setLastWorkout(last10Workouts.records[0]);
         } catch(err){
-          const newToken = await getNewToken(cookieWhoop);
-          console.log(newToken)
-
-          if(newToken === undefined || newToken === null){
-            window.location.href = '/login';  // redirect to login page
-          } else{
-            const last10Workouts = await getLastWorkouts(newToken);
-            setWorkouts(last10Workouts.records);
-            setLastWorkout(last10Workouts.records[0]);
-          }
-
-          setToken(newToken);
+          await saveToken(cookieWhoop);
         }
       } else {
         window.location.href = '/login';  // redirect to login page
@@ -55,7 +57,7 @@ function Main() {
 
   useEffect(() => {
     const init = async () => {
-      if(workouts && lastWorkout){
+      if(workouts && lastWorkout && token){
         setLoading(false);
       }
     }
@@ -72,26 +74,28 @@ function Main() {
   }
 
   return (
-    <Box>
+    <div style={{ backgroundColor:'transparent', height:'100%'}}>
       <Box sx={{display:'flex'}}>
         <BodyPart token={token}/>
       </Box>
       <Box sx={{position:'absolute', width:'60%', ml:70, height:500, top:190, display:'grid', columnGap:1, rowGap:1}}>
-        <Paper className="element" sx={{ gridColumnStart:1, gridColumnEnd:2, borderRadius:3, height:230}}>
+        <Paper className="element" sx={{ gridColumnStart:1, gridColumnEnd:2, borderRadius:3, height:230, backgroundImage:'linear-gradient(#283339, #101518)'}}>
           <ReportList workouts={workouts ? workouts : []}/>
         </Paper>
-        <Paper sx={{gridColumnStart:2, borderRadius:3}}>          
+        <Paper sx={{gridColumnStart:2, borderRadius:3, backgroundImage:'linear-gradient(#283339, #101518)'}}>          
           <RecoveryStrain token={token} />
         </Paper>
-        <Paper className="element" sx={{gridColumnStart:1, gridColumnEnd:2, borderRadius:3, height:300}}>
-          <IllnessSquare />
+        <Paper className="element" sx={{gridColumnStart:1, gridColumnEnd:2, borderRadius:3, height:300, backgroundImage:'linear-gradient(#283339, #101518)'}}>
+          <IllnessSquare token={token} />
         </Paper>
-        <Paper sx={{gridColumnStart:2, gridColumnEnd:2, borderRadius:3}}>
+        <Paper sx={{gridColumnStart:2, gridColumnEnd:2, borderRadius:3, backgroundImage:'linear-gradient(#283339, #101518)'}}>
           <LastPerformance workout={lastWorkout ? lastWorkout : null} />
         </Paper>
       </Box>
-      
-    </Box>
+      <div style={{height:'50px', width:'auto', position:'absolute', top:'91%', right:'1%', overflowY:'hidden'}}>
+        <img style={{height:'50px', width:'auto'}} alt="powered by whoop" src={require('../Images/DatabyWhoop.png')}/>
+      </div>
+    </div>
   );
 }
 

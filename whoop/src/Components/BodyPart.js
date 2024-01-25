@@ -3,6 +3,7 @@ import {Box, Typography, Container} from '@mui/material';
 import { getWorkoutByDates } from '../Controllers/WorkoutController';
 import { useEffect, useState } from 'react';
 import { getMusclesFromWorkouts } from '../Utils/bodypartParse';
+import '../Styles.css'
 
 export default function BodyPart({ token }) {
     const [sore, setSore] = useState([]);
@@ -26,9 +27,10 @@ export default function BodyPart({ token }) {
             <Typography
                 variant='h4'
                 sx={{
-                    ml:19, 
+                    ml:15, 
                     mb:5, 
                 }}
+                className='headline'
             >
                 Muscle Recovery
             </Typography>

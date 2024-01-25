@@ -13,11 +13,14 @@ function formalitzar (sleepData, recoveryData){
         RR.push(sleepData[i].score.respiratory_rate)
         Awake.push(sleepData[i].score.stage_summary.total_awake_time_milli)
         SEP.push(sleepData[i].score.sleep_efficiency_percentage)
+        const total_time = sleepData[i].score.stage_summary.total_awake_time_milli + sleepData[i].score.stage_summary.total_light_sleep_time_milli + sleepData[i].score.stage_summary.total_slow_wave_sleep_time_milli + sleepData[i].score.stage_summary.total_rem_sleep_time_milli
+        
         TotalSleep.push({
             awake: sleepData[i].score.stage_summary.total_awake_time_milli,
             light: sleepData[i].score.stage_summary.total_light_sleep_time_milli,
             disturbance: sleepData[i].score.stage_summary.disturbance_count,
-            efficiency: sleepData[i].score.sleep_efficiency_percentage
+            efficiency: sleepData[i].score.sleep_efficiency_percentage,
+            totalSleepTime: total_time
         })
     }
 
@@ -29,7 +32,7 @@ function formalitzar (sleepData, recoveryData){
     }
 
     return({
-        respiraoryRate: RR,
+        respiratoryRate: RR,
         O2: O2,
         RestingHeartRate: RHR,
         HRV: HRV,
