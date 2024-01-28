@@ -11,9 +11,7 @@ export async function getStrain(accessToken) {
       mode:'no-cors',
       method:'GET',
       headers: {
-        Authorization: `Bearer ${accessToken}`,
-        'Access-Control-Allow-Origin': '*'
-
+        'Authorization': `Bearer ${accessToken}`,
       },
     });
   
@@ -32,9 +30,7 @@ export async function getRecovery(token, cycle) {
         mode:'no-cors',
         method:'GET',
         headers: {
-            Authorization: `Bearer ${token}`,
-          'Access-Control-Allow-Origin': '*'
-
+          'Authorization': `Bearer ${token}`,
         },
     });
 

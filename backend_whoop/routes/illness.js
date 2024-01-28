@@ -18,8 +18,6 @@ app.get('/illness/:token', async (req, res) => {
         method:'GET',
         headers: {
             'Authorization': `Bearer ${token}`,
-            'Access-Control-Allow-Origin': '*'
-
         }
     })
 
@@ -30,8 +28,6 @@ app.get('/illness/:token', async (req, res) => {
         mode:'no-cors',
         headers: {
             'Authorization': `Bearer ${token}`,
-            'Access-Control-Allow-Origin': '*'
-
         }
     })  
     

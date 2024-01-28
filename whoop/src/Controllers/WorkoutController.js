@@ -10,9 +10,7 @@ export async function getLastWorkouts(accessToken){
             mode:'no-cors',
             method: 'GET',
             headers: {
-                Authorization: `Bearer ${accessToken}`,
-                'Access-Control-Allow-Origin': '*'
-
+                'Authorization': `Bearer ${accessToken}`,
             }
         });
 
@@ -57,7 +55,7 @@ export async function getWorkoutByDates(accessToken){
         mode:'no-cors',
         method: 'GET',
         headers: {
-            Authorization: `Bearer ${accessToken}`,
+            'Authorization': `Bearer ${accessToken}`,
             'Access-Control-Allow-Origin': '*'
         }
     });
@@ -75,8 +73,7 @@ export async function getWorkoutById(accessToken, id){
         mode:'no-cors',
         method: 'GET',
         headers: {
-            Authorization: `Bearer ${accessToken}`,
-            'Access-Control-Allow-Origin': '*',
+            'Authorization': `Bearer ${accessToken}`,
         }
     });
 
