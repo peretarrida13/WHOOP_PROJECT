@@ -8,9 +8,6 @@
     "startLocal": "nodemon ./index.js",
     "start": "node ./index.js"
   },
-  "engines": {
-    "node": "16.20.0"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
