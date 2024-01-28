@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 8081
+const port = 3001
 const cors = require('cors')
 const session = require('express-session')
 const mongoose = require('mongoose')
@@ -48,5 +48,5 @@ app.use('/api', require('./routes/user.js'));
 app.use('/api', require('./routes/illness.js'));
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Whoop performance listening on port ${port}`)
 })
