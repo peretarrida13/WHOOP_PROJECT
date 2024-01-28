@@ -10,10 +10,10 @@ export async function getLastWorkouts(accessToken){
         console.log(accessToken)
 
         const response = await fetch(uri, {
-            mode:'no-cors',
+            //mode:'no-cors',
             method: 'GET',
             headers: {
-                'Authorization': auth
+                Authorization: auth
             }
         });
 
