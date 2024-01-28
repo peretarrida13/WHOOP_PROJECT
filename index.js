@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const port = 3001
 const cors = require('cors')
 const session = require('express-session')
 const mongoose = require('mongoose')
@@ -8,7 +7,7 @@ require('dotenv').config()
 var bodyParser = require( 'body-parser' );
 const passport = require('passport')
 const cookieParser = require('cookie-parser')
-
+const port = process.env.PORT || 5000
 
 mongoose.connect(process.env.MONGO_URI)
 const database = mongoose.connection;
