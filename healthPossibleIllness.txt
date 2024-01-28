@@ -1,0 +1,229 @@
+1. Respiratory Infections (e.g., Pneumonia, Bronchitis):
+    - Respiratory Rate: Increased respiratory rate can indicate respiratory distress. Threshold values less than 11 and more than 20
+    - SpO2 Percentage: Decreased blood oxygen levels can signal impaired lung function. Threshold values less than 95% minimal alert less than 92% High Alert
+        
+2. Cardiovascular Diseases (e.g., Heart Disease, Hypertension):
+    - Resting Heart Rate: Elevated resting heart rate can be a sign of cardiovascular stress. Threshold values more or equal than 100bpm 
+    - HRV (Heart Rate Variability): Abnormal HRV, particularly reduced variability, may indicate cardiovascular issues. Threshold --> calculate the outliners and then if is 20ms off the mean is an alert
+
+3. Sleep Disorders (e.g., Sleep Apnea, Insomnia):
+    - Total Awake Time, Total Light Sleep Time, Disturbance Count: Increased values can suggest sleep disorders. Total Awake Time (threshold --> 30-60 minutes), Total Light Sleep Time(threshold --> 70%), Disturbance Count (threshold --> 7-10)
+    - Sleep Efficiency Percentage: Low sleep efficiency can be a sign of disturbed sleep. threshold is <75%
+
+4. Febrile Illnesses (e.g., Influenza, COVID-19):
+    - Skin Temperature: Elevated body temperature is a common symptom of febrile illnesses. Threshold < 35, >37.5
+    - Resting Heart Rate: Increased rate may occur during fever. Threshold values more or equal than 100bpm 
+    - HRV: Changes in HRV can accompany illness. Threshold --> calculate the outliners and then if is 20ms off the mean is an alert
+
+5. Anxiety or Stress-Related Disorders:
+    - HRV: Lower HRV can indicate stress or anxiety. Threshold --> calculate the outliners and then if is 20ms off the mean is an alert
+    - Resting Heart Rate: Elevated resting heart rate can also be a sign of stress or anxiety. Threshold values more or equal than 100bpm 
+    - Sleep Data (Total Awake Time, Light Sleep, Disturbance Count, Sleep Efficiency): Disturbed sleep patterns can be associated with stress or anxiety. Total Awake Time (threshold --> 30-60 minutes), Total Light Sleep Time(threshold --> 70%), Disturbance Count (threshold --> 7-10), Sleep Efficiency (threshold is <75%)
+
+6. Diabetes: (Indirect correlations)
+    - Sleep Data (Total Awake Time, Light Sleep, Disturbance Count, Sleep Efficiency): Disrupted sleep patterns can sometimes occur with diabetes. Total Awake Time (threshold --> 30-60 minutes), Total Light Sleep Time(threshold --> 70%), Disturbance Count (threshold --> 7-10), Sleep Efficiency (threshold is <75%)
+    - HRV: Changes in HRV can be indirectly related to diabetes. Threshold --> calculate the outliners and then if is 20ms off the mean is an alert
+
+7. Dehydration or Heat-Related Illnesses:
+    - Skin Temperature: Elevated temperature can indicate heat-related stress. Threshold < 35, >37.5
+    - Resting Heart Rate: Increased heart rate might occur with dehydration or heat-related illnesses.Threshold values more or equal than 100bpm 
+
+8. Anemia:
+    - SpO2 Percentage: Decreased oxygen saturation levels can be a sign of anemia. Threshold values less than 95% minimal alert less than 92% High Alert
+    - Resting Heart Rate: An increased heart rate can occur as the body attempts to compensate for reduced oxygen carrying capacity.Threshold values more or equal than 100bpm 
+
+SLEEP:
+    {
+        "stage_summary": {
+            "total_in_bed_time_milli": 30272735,
+            "total_awake_time_milli": 1403507,
+            "total_no_data_time_milli": 0,
+            "total_light_sleep_time_milli": 14905851,
+            "total_slow_wave_sleep_time_milli": 6630370,
+            "total_rem_sleep_time_milli": 5879573,
+            "sleep_cycle_count": 3,
+            "disturbance_count": 12
+        },
+        "sleep_needed": {
+            "baseline_milli": 27395716,
+            "need_from_sleep_debt_milli": 352230,
+            "need_from_recent_strain_milli": 208595,
+            "need_from_recent_nap_milli": -12312
+        },
+        "respiratory_rate": 16.11328125,
+        "sleep_performance_percentage": 98,
+        "sleep_consistency_percentage": 90,
+        "sleep_efficiency_percentage": 91.69533848
+    }
+    
+RECOVERY DATA:
+    {
+        "user_calibrating": false,
+        "recovery_score": 44,
+        "resting_heart_rate": 64,
+        "hrv_rmssd_milli": 31.813562,
+        "spo2_percentage": 95.6875,
+        "skin_temp_celsius": 33.7
+    }
+
+    {
+  respiratoryRate: [
+    14.824219, 16.113281,
+    16.113281, 16.259766,
+    15.058594, 15.366211,
+           15, 15.175781,
+    15.234375, 17.050781,
+    15.673828, 17.050781,
+    16.347656, 14.707031
+  ],
+  O2: [
+    97.545456,  94.55,
+         91.5,     94,
+     96.57143, 97.875,
+     95.86667,   95.3,
+       95.375,   96.4,
+           96,     96,
+     96.03846,     96
+  ],
+  RestingHeartRate: [
+    50, 51, 54, 53, 49, 52,
+    51, 50, 51, 67, 52, 53,
+    51, 52
+  ],
+  HRV: [
+      94.41868,  95.194786,
+      91.83582,  102.75779,
+     106.34359,  98.782486,
+     108.60043, 102.705055,
+    107.016266,   47.72562,
+      86.38527,  96.659645,
+      102.9486,   102.1698
+  ],
+  awake: [
+    2422502, 3806812,
+    3777951, 3316528,
+    3604951, 2480211,
+    2999317, 2278315,
+    3345364, 1441986,
+    2624404,  692153,
+    2595555, 3374218
+  ],
+  sleepEfficiencyPercentage: [
+    92.09999, 88.34918,
+    89.89582, 85.69509,
+        90.8, 89.95281,
+     91.1489, 94.23151,
+    91.26789, 95.81224,
+    93.02545, 83.88878,
+    90.05807, 90.73429
+  ],
+  skinTemperature: [
+         33.2,      32.4,
+           31,      32.7,
+    32.643333, 31.756666,
+         31.9, 32.388332,
+         31.4,      35.9,
+    32.173332, 30.443333,
+           32, 31.681667
+  ],
+  totalSleep: [
+    {
+      awake: 2422502,
+      light: 15486669,
+      disturbance: 16,
+      efficiency: 92.09999,
+      totalSleepTime: 28983488
+    },
+    {
+      awake: 3806812,
+      light: 17101852,
+      disturbance: 18,
+      efficiency: 88.34918,
+      totalSleepTime: 32674201
+    },
+    {
+      awake: 3777951,
+      light: 19898310,
+      disturbance: 21,
+      efficiency: 89.89582,
+      totalSleepTime: 36107084
+    },
+    {
+      awake: 3316528,
+      light: 15399250,
+      disturbance: 16,
+      efficiency: 85.69509,
+      totalSleepTime: 22320726
+    },
+    {
+      awake: 3604951,
+      light: 19783807,
+      disturbance: 17,
+      efficiency: 90.8,
+      totalSleepTime: 32068472
+    },
+    {
+      awake: 2480211,
+      light: 15658869,
+      disturbance: 20,
+      efficiency: 89.95281,
+      totalSleepTime: 24685632
+    },
+    {
+      awake: 2999317,
+      light: 20216466,
+      disturbance: 17,
+      efficiency: 91.1489,
+      totalSleepTime: 33886377
+    },
+    {
+      awake: 2278315,
+      light: 14881207,
+      disturbance: 15,
+      efficiency: 94.23151,
+      totalSleepTime: 30544879
+    },
+    {
+      awake: 3345364,
+      light: 14735968,
+      disturbance: 18,
+      efficiency: 91.26789,
+      totalSleepTime: 28665389
+    },
+    {
+      awake: 1441986,
+      light: 21485399,
+      disturbance: 7,
+      efficiency: 95.81224,
+      totalSleepTime: 34433399
+    },
+    {
+      awake: 2624404,
+      light: 11420416,
+      disturbance: 14,
+      efficiency: 93.02545,
+      totalSleepTime: 27627307
+    },
+    {
+      awake: 692153,
+      light: 3430905,
+      disturbance: 2,
+      efficiency: 83.88878,
+      totalSleepTime: 4296094
+    },
+    {
+      awake: 2595555,
+      light: 15399345,
+      disturbance: 6,
+      efficiency: 90.05807,
+      totalSleepTime: 24800964
+    },
+    {
+      awake: 3374218,
+      light: 17822760,
+      disturbance: 17,
+      efficiency: 90.73429,
+      totalSleepTime: 34721749
+    }
+  ]
+}
