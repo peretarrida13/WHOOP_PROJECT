@@ -60,6 +60,7 @@ export async function getWorkoutByDates(accessToken){
         headers: {
             Authorization: `Bearer ${accessToken}`,
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
         }
     });
 
@@ -77,6 +78,7 @@ export async function getWorkoutById(accessToken, id){
         headers: {
             Authorization: `Bearer ${accessToken}`,
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
         }
     });
 
