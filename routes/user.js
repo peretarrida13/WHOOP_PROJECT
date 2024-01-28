@@ -140,10 +140,10 @@ app.get('/auth/performance',
 
 
 app.get('/auth/performance/callback',
-    passport.authenticate('oauth2', {failureRedirect: 'https://main.d30da3qs96b5vz.amplifyapp.com/login', failureMessage: true }),
+    passport.authenticate('oauth2', {failureRedirect: 'https://whoop-performance-frontend-a54d4e25e6a0.herokuapp.com/login', failureMessage: true }),
 async function (req, res) {
     console.log('userreturn', req.user)
-    res.redirect('https://main.d30da3qs96b5vz.amplifyapp.com/token/' + req.user.acessToken );
+    res.redirect('https://whoop-performance-frontend-a54d4e25e6a0.herokuapp.com/token/' + req.user.acessToken );
 });
 
 
