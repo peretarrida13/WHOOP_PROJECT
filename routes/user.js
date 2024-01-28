@@ -138,9 +138,9 @@ app.get('/auth/performance',
 
 
 app.get('/auth/performance/callback',
-    passport.authenticate('oauth2', {failureRedirect: 'http://localhost:3000/login', failureMessage: true }),
+    passport.authenticate('oauth2', {failureRedirect: 'https://main.d30da3qs96b5vz.amplifyapp.com/login', failureMessage: true }),
 async function (req, res) {
-    res.redirect('http://localhost:3000/token/' + req.user.acessToken );
+    res.redirect('https://main.d30da3qs96b5vz.amplifyapp.com/token/' + req.user.acessToken );
 });
 
 
