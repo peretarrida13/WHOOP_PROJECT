@@ -12,6 +12,8 @@ export async function getStrain(accessToken) {
       method:'GET',
       headers: {
         Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+
       },
     });
   
@@ -31,6 +33,8 @@ export async function getRecovery(token, cycle) {
         method:'GET',
         headers: {
           Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+
         },
     });
 

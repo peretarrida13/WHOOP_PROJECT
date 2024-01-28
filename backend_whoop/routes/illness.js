@@ -18,6 +18,8 @@ app.get('/illness/:token', async (req, res) => {
         method:'GET',
         headers: {
             Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+
         }
     })
 
@@ -28,6 +30,8 @@ app.get('/illness/:token', async (req, res) => {
         mode:'no-cors',
         headers: {
             Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+
         }
     })  
     

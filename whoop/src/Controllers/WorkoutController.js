@@ -13,6 +13,7 @@ export async function getLastWorkouts(accessToken){
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json',
             }
         });
 
@@ -58,7 +59,7 @@ export async function getWorkoutByDates(accessToken){
         method: 'GET',
         headers: {
             Authorization: `Bearer ${accessToken}`,
-            'Access-Control-Allow-Origin': '*'
+            'Content-Type': 'application/json',
         }
     });
 
@@ -76,6 +77,7 @@ export async function getWorkoutById(accessToken, id){
         method: 'GET',
         headers: {
             Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
         }
     });
 
