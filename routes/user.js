@@ -80,7 +80,7 @@ async function  getUser(
 ){
     const {first_name, last_name, user_id} = profile
     const user = await User.findOne({userId: user_id})
-    console.log('user found', user)
+    console.log('ref', refreshToken)
     if (user) {
         user.acessToken = accessToken
         user.refreshToken = refreshToken
@@ -90,7 +90,7 @@ async function  getUser(
         user.userId = user_id
 
         await user.save()
-
+        console.log('user', user)
         done(null, user)
     } else{
         const newUser = new User({
