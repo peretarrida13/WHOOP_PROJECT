@@ -39,6 +39,7 @@ function Main() {
   useEffect(() => {
     const init = async () => {
       const cookieWhoop = await cookies.get('whoopPerformance'); 
+      console.log(cookieWhoop);
       setToken(cookieWhoop);
       if(cookieWhoop) {
         try{
