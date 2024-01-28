@@ -14,6 +14,8 @@ app.get('/illness/:token', async (req, res) => {
 
 
     const resp1 = await fetch(`https://api.prod.whoop.com/developer/v1/activity/sleep?${query}`, {
+        mode:'cors',
+        method:'GET',
         headers: {
             'Authorization': `Bearer ${token}`,
             'Access-Control-Allow-Origin': '*'
@@ -24,6 +26,8 @@ app.get('/illness/:token', async (req, res) => {
     const sleepData = await resp1.json();
 
     const resp2 = await fetch(`https://api.prod.whoop.com/developer/v1/recovery?${query}`, {
+        method:'GET',
+        mode:'cors',
         headers: {
             'Authorization': `Bearer ${token}`,
             'Access-Control-Allow-Origin': '*'
