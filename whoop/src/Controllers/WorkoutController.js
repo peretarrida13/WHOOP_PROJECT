@@ -6,6 +6,7 @@ export async function getLastWorkouts(accessToken){
 
         const uri = `https://api.prod.whoop.com/developer/v1/activity/workout?${query}`
         console.log(uri)
+        console.log(accessToken)
 
         const response = await fetch(uri, {
             mode:'no-cors',
