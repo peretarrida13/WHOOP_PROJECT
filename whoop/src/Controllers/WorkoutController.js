@@ -9,7 +9,9 @@ export async function getLastWorkouts(accessToken){
         const response = await fetch(uri, {
             method: 'GET',
             headers: {
-                Authorization: `Bearer ${accessToken}`
+                Authorization: `Bearer ${accessToken}`,
+                'Access-Control-Allow-Origin': '*'
+
             }
         });
 
@@ -53,7 +55,8 @@ export async function getWorkoutByDates(accessToken){
     const response = await fetch(uri, {
         method: 'GET',
         headers: {
-            Authorization: `Bearer ${accessToken}`
+            Authorization: `Bearer ${accessToken}`,
+            'Access-Control-Allow-Origin': '*'
         }
     });
 
@@ -69,7 +72,8 @@ export async function getWorkoutById(accessToken, id){
     const response = await fetch(uri, {
         method: 'GET',
         headers: {
-            Authorization: `Bearer ${accessToken}`
+            Authorization: `Bearer ${accessToken}`,
+            'Access-Control-Allow-Origin': '*',
         }
     });
 

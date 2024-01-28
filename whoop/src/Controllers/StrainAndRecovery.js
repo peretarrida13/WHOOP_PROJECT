@@ -10,6 +10,8 @@ export async function getStrain(accessToken) {
     const cycleResponse = await fetch(uri, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
+        'Access-Control-Allow-Origin': '*'
+
       },
     });
   
@@ -27,6 +29,8 @@ export async function getRecovery(token, cycle) {
     const recoveryResponse = await fetch(uri, {
         headers: {
             Authorization: `Bearer ${token}`,
+          'Access-Control-Allow-Origin': '*'
+
         },
     });
 
