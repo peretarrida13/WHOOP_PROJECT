@@ -11,7 +11,7 @@ export async function getLastWorkouts(accessToken){
             mode:'no-cors',
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${accessToken}`,
+                Authorization: `Bearer ${accessToken}`,
             }
         });
 
