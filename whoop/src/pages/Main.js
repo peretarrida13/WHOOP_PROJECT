@@ -25,7 +25,6 @@ function Main() {
 
   const saveToken = async (cookieWhoop) => {
     const newToken = await getNewToken(cookieWhoop);
-    console.log(newToken)
     await setToken(newToken);
     
     if(newToken === undefined || newToken === null){
