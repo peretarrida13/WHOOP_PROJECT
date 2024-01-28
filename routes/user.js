@@ -80,7 +80,7 @@ async function  getUser(
 ){
     const {first_name, last_name, user_id} = profile
     const user = await User.findOne({userId: user_id})
-
+    console.log(user)
     if (user) {
         user.acessToken = accessToken
         user.refreshToken = refreshToken
@@ -101,7 +101,7 @@ async function  getUser(
             lastName: last_name,
             userId: user_id,
         })
-        
+        console.log(newUser)
         await newUser.save()
 
         done(null, newUser)
@@ -140,7 +140,6 @@ app.get('/auth/performance',
 app.get('/auth/performance/callback',
     passport.authenticate('oauth2', {failureRedirect: 'https://main.d30da3qs96b5vz.amplifyapp.com/login', failureMessage: true }),
 async function (req, res) {
-    console.log(req.user)
     res.redirect('https://main.d30da3qs96b5vz.amplifyapp.com/token/' + req.user.acessToken );
 });
 
