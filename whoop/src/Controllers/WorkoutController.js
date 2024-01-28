@@ -5,15 +5,15 @@ export async function getLastWorkouts(accessToken){
         });
 
         const uri = `https://api.prod.whoop.com/developer/v1/activity/workout?${query}`
-        console.log(uri)
+        const auth = `Bearer ${accessToken}`
+        console.log(auth)
         console.log(accessToken)
 
         const response = await fetch(uri, {
             mode:'no-cors',
             method: 'GET',
             headers: {
-                Authorization: `Bearer ${accessToken}`,
-                'Content-Type': 'application/json',
+                'Authorization': auth
             }
         });
 
