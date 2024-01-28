@@ -21,7 +21,7 @@ database.once('connected', function() {
 
 
 app.get('/', (req, res) => {
-  res.send({msg: 'Hello World!'})
+  res.send('Hello World!')
 })
 
 app.use(cookieParser());
