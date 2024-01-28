@@ -40,6 +40,8 @@ app.post('/refresh_token', async (req, res) => {
         },
     )
 
+    console.log('refresh', refreshTokensResponse)
+
     const refreshTokens = await refreshTokensResponse.json()
 
     userInfo.acessToken = refreshTokens.access_token
