@@ -14,7 +14,7 @@ export async function getLastWorkouts(accessToken){
             headers: {
                 Authorization: auth,
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Origin': 'https://whoop-performance-frontend-a54d4e25e6a0.herokuapp.com',
             }
         });
 
@@ -60,7 +60,7 @@ export async function getWorkoutByDates(accessToken){
         headers: {
             Authorization: `Bearer ${accessToken}`,
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Origin': 'https://whoop-performance-frontend-a54d4e25e6a0.herokuapp.com',
         }
     });
 
@@ -78,7 +78,7 @@ export async function getWorkoutById(accessToken, id){
         headers: {
             Authorization: `Bearer ${accessToken}`,
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Origin': 'https://whoop-performance-frontend-a54d4e25e6a0.herokuapp.com',
         }
     });
 

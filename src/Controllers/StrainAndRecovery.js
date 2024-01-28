@@ -12,6 +12,7 @@ export async function getStrain(accessToken) {
       headers: {
         Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://whoop-performance-frontend-a54d4e25e6a0.herokuapp.com',
 
       },
     });
@@ -32,6 +33,7 @@ export async function getRecovery(token, cycle) {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://whoop-performance-frontend-a54d4e25e6a0.herokuapp.com',
 
         },
     });
