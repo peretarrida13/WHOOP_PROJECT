@@ -5,6 +5,7 @@ export async function getLastWorkouts(accessToken){
         });
 
         const uri = `https://api.prod.whoop.com/developer/v1/activity/workout?${query}`
+        console.log(uri)
 
         const response = await fetch(uri, {
             mode:'no-cors',
@@ -55,7 +56,7 @@ export async function getWorkoutByDates(accessToken){
         mode:'no-cors',
         method: 'GET',
         headers: {
-            'Authorization': `Bearer ${accessToken}`,
+            Authorization: `Bearer ${accessToken}`,
             'Access-Control-Allow-Origin': '*'
         }
     });
@@ -73,7 +74,7 @@ export async function getWorkoutById(accessToken, id){
         mode:'no-cors',
         method: 'GET',
         headers: {
-            'Authorization': `Bearer ${accessToken}`,
+            Authorization: `Bearer ${accessToken}`,
         }
     });
 

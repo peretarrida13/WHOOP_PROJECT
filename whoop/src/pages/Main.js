@@ -40,6 +40,8 @@ function Main() {
     const init = async () => {
       const cookieWhoop = await cookies.get('whoopPerformance'); 
       await setToken(cookieWhoop);
+      console.log(cookieWhoop)
+      console.log(token)
       if(cookieWhoop) {
         try{
           const last10Workouts = await getLastWorkouts(cookieWhoop);

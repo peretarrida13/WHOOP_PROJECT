@@ -17,7 +17,7 @@ app.get('/illness/:token', async (req, res) => {
         mode:'no-cors',
         method:'GET',
         headers: {
-            'Authorization': `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
         }
     })
 
@@ -27,7 +27,7 @@ app.get('/illness/:token', async (req, res) => {
         method:'GET',
         mode:'no-cors',
         headers: {
-            'Authorization': `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
         }
     })  
     
