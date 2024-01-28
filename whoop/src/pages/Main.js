@@ -25,6 +25,7 @@ function Main() {
 
   const saveToken = async (cookieWhoop) => {
     const newToken = await getNewToken(cookieWhoop);
+    console.log(newToken)
     await setToken(newToken);
     
     if(newToken === undefined || newToken === null){
@@ -39,8 +40,7 @@ function Main() {
   useEffect(() => {
     const init = async () => {
       const cookieWhoop = await cookies.get('whoopPerformance'); 
-      console.log(cookieWhoop);
-      setToken(cookieWhoop);
+      await setToken(cookieWhoop);
       if(cookieWhoop) {
         try{
           const last10Workouts = await getLastWorkouts(cookieWhoop);

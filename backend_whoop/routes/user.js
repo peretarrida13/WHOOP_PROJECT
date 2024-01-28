@@ -140,6 +140,7 @@ app.get('/auth/performance',
 app.get('/auth/performance/callback',
     passport.authenticate('oauth2', {failureRedirect: 'http://localhost:3000/login', failureMessage: true }),
 async function (req, res) {
+    console.log(req.user)
     res.redirect('http://localhost:3000/token/' + req.user.acessToken );
 });
 
