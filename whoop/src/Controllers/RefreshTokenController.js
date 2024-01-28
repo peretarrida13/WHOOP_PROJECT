@@ -1,6 +1,6 @@
 
 export async function getRefreshToken(accessToken){
-    const response = await fetch('http://127.0.0.1:8081/api/refresh_token', {
+    const response = await fetch('https://whoop-performance-backend-e57e252e2747.herokuapp.com/api/refresh_token', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

@@ -6,7 +6,7 @@ export default function LogIn() {
     const [loading, setLoading] = useState(false);
     const login = async () => {
         setLoading(true);
-        window.location.replace(`http://127.0.0.1:8081/api/auth/performance/`, "_self");
+        window.location.replace(`https://whoop-performance-backend-e57e252e2747.herokuapp.com/api/auth/performance/`, "_self");
     }
 
     if(loading){
