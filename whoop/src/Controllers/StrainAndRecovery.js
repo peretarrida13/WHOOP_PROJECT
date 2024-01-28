@@ -8,7 +8,7 @@ export async function getStrain(accessToken) {
     const uri = `https://api.prod.whoop.com/developer/v1/cycle?${query}`;
 
     const cycleResponse = await fetch(uri, {
-      mode:'cors',
+      mode:'no-cors',
       method:'GET',
       headers: {
         Authorization: `Bearer ${accessToken}`,
@@ -29,7 +29,7 @@ export async function getRecovery(token, cycle) {
     const uri = `https://api.prod.whoop.com/developer/v1/cycle/${cycle}/recovery`;
     
     const recoveryResponse = await fetch(uri, {
-        mode:'cors',
+        mode:'no-cors',
         method:'GET',
         headers: {
             Authorization: `Bearer ${token}`,
