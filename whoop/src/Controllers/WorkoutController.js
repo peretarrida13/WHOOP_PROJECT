@@ -13,7 +13,9 @@ export async function getLastWorkouts(accessToken){
             //mode:'no-cors',
             method: 'GET',
             headers: {
-                Authorization: auth
+                Authorization: auth,
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
             }
         });
 
