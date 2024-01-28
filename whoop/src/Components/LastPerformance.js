@@ -20,13 +20,19 @@ export default function LastPerformance({ workout }){
             const sport = getWorkoutType(workout.sport_id);
             setType(sport);
         }
-    },[])
+    }, [workout])
 
+    const gotoWorkout = () => {
+        window.location.href = `/report/${workout.id}`;
+    }
+    
     return(
         <div style={{
-            paddingLeft:20, paddingRight:20, 
-            color:'#00F19F', backgroundColor:'transparent'
-        }}>
+                paddingLeft:20, paddingRight:20, 
+                color:'#00F19F', backgroundColor:'transparent'
+            }}
+            onClick={gotoWorkout}
+        >
             <h1 className='headline' style={{textAlign:'center'}}>Last Performance</h1>
             <div  style={{
                 width:'100%', 

@@ -4,7 +4,7 @@ import '../Styles.css'
 import Cookies from "universal-cookie";
 import { getWorkoutById } from '../Controllers/WorkoutController';
 import { getHRZoneText, getAverageHRInformation, parseIsoDateWithOffset, getStrainInformation, getCaloriesReport, createRecoveryTips, createDataChart, msToHMS } from '../Utils/reportGenerator';
-import { getWorkoutType } from '../Utils/performanceCalculator';
+import { calculatePerformance, getWorkoutType } from '../Utils/performanceCalculator';
 import { Doughnut } from 'react-chartjs-2';
 import {Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js'
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -22,6 +22,7 @@ export default function Report() {
     const [recoveryReport, setRecoveryReport] = useState(null);
     const [doughnutData, setDoughnutData] = useState({})
     const [HRzones, setHRzones] = useState({})
+    const [performance, setPerformance] = useState(0);
     const cookies = new Cookies();
 
     useEffect(() => {
@@ -59,6 +60,9 @@ export default function Report() {
             const data = createDataChart(response.score.zone_duration)
             setDoughnutData(data)
 
+            const perf = calculatePerformance(response); 
+            setPerformance(perf);
+
             setHRzones(response.score.zone_duration)
         }
         getWorkout();
@@ -89,6 +93,7 @@ export default function Report() {
             </div>
             <div>
                 <h3 className='headline'><u>Key Data:</u></h3>
+                <p className='body-text'><b>Performance Score:</b> <span className="numbers">{performance}</span></p>
                 <p className='body-text'><b>Strain:</b> <span className="numbers">{Math.floor(workout.score.strain*10)/10}</span></p>
                 <p className="report-title headline">{strainReport.title}</p>
                 <p className='body-text'>{strainReport.text}</p>
@@ -143,6 +148,9 @@ export default function Report() {
                     <li className='body-text'>{recoveryReport.mental}</li>
                 </ul>
             </div> 
+            <div style={{height:'50px', width:'auto', position:'fixed', top:'91%', right:'1%', overflowY:'hidden'}}>
+                <img style={{height:'50px', width:'auto'}} alt="powered by whoop" src={require('../Images/DatabyWhoop.png')}/>
+            </div>
             <p className='headline' style={{textAlign:'center', marginTop:50}}><u>All the information above is not 100% medical, for medical advice contact a doctor</u></p>
         </div>
     )
