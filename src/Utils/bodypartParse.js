@@ -16,7 +16,7 @@ export const getMusclesFromWorkouts = (exercises) => {
         for(let j = 0; j < workouts.length; ++j){
             if(exercises[i].sport_id === workouts[j].id){
                 for(let k = 0; k < workouts[j].muscles.length; ++k){
-                    const days = daysBetweenDates(exercises[i].created_at);
+                    /*const days = daysBetweenDates(exercises[i].created_at);
                     if(days === 0 || days === 1){
                         workouts[j].muscles[k].frequency = 3;
                     } else if(days === 2){
@@ -25,10 +25,11 @@ export const getMusclesFromWorkouts = (exercises) => {
                         workouts[j].muscles[k].frequency = 1;
                     } else{
                         workouts[j].muscles[k].frequency = 0;
-                    }
+                    }*/
                     
                     workouts[j].muscles[k].name = workouts[j].sport;
-                    if(shouldAdd(workouts[j].muscles[k], muscles))muscles.push(workouts[j].muscles[k]);
+                    //if(shouldAdd(workouts[j].muscles[k], muscles))
+                    muscles.push(workouts[j].muscles[k]);
                 }
             }
         }
