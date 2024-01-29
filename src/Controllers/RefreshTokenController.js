@@ -12,6 +12,7 @@ export async function getRefreshToken(accessToken){
     })
     
     const data = await response.json()    
+    console.log(data.accessToken)
 
     return data.accessToken
 

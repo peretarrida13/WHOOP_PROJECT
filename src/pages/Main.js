@@ -26,6 +26,7 @@ function Main() {
 
   const saveToken = async (cookieWhoop) => {
     const newToken = await getNewToken(cookieWhoop);
+    console.log(newToken)
     await setToken(newToken);
     
     if(newToken === undefined || newToken === null){
@@ -51,7 +52,7 @@ function Main() {
           console.log(err)
         }
       } else {
-        //window.location.href = '/login';  // redirect to login page
+        window.location.href = '/login';  // redirect to login page
       }
     }
     init();
