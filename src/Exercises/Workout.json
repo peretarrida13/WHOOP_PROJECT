@@ -25,7 +25,8 @@
         "muscles": [
             {"muscles": ["forearm"], "frequency": 3},
             {"muscles": ["triceps"], "frequency": 2},
-            {"muscles": ["shoulders"], "frequency": 2},
+            {"muscles": ["back-deltoids"], "frequency": 2},
+            {"muscles": ["front-deltoids"], "frequency": 2},
             {"muscles": ["obliques"], "frequency": 2}
         ]
     },
@@ -86,7 +87,8 @@
             {"muscles": ["lower-back"], "frequency": 3},
             {"muscles": ["obliques"], "frequency": 2},
             {"muscles": ["forearm"], "frequency": 2},
-            {"muscles": ["shoulders"], "frequency": 2}
+            {"muscles": ["back-deltoids"], "frequency": 2},
+            {"muscles": ["front-deltoids"], "frequency": 2}        
         ]
     },
     {
@@ -155,7 +157,8 @@
         "muscles": [
             {"muscles": ["forearm"], "frequency": 3},
             {"muscles": ["triceps"], "frequency": 2},
-            {"muscles": ["shoulders"], "frequency": 2},
+            {"muscles": ["back-deltoids"], "frequency": 2},
+            {"muscles": ["front-deltoids"], "frequency": 2},
             {"muscles": ["obliques"], "frequency": 2}
         ]
     },
@@ -175,7 +178,8 @@
         "muscles": [
             {"muscles": ["upper-back"], "frequency": 3},
             {"muscles": ["lower-back"], "frequency": 3},
-            {"muscles": ["shoulders"], "frequency": 3},
+            {"muscles": ["back-deltoids"], "frequency": 3},
+            {"muscles": ["front-deltoids"], "frequency": 3},
             {"muscles": ["forearm"], "frequency": 2},
             {"muscles": ["triceps"], "frequency": 2},
             {"muscles": ["abs"], "frequency": 2}
@@ -187,7 +191,8 @@
         "muscles": [
             {"muscles": ["forearm"], "frequency": 3},
             {"muscles": ["triceps"], "frequency": 2},
-            {"muscles": ["shoulders"], "frequency": 2},
+            {"muscles": ["back-deltoids"], "frequency": 2},
+            {"muscles": ["front-deltoids"], "frequency": 2},
             {"muscles": ["obliques"], "frequency": 2}
         ]
     },
@@ -216,7 +221,8 @@
         "sport": "Water Polo",
         "muscles": [
             {"muscles": ["upper-back"], "frequency": 3},
-            {"muscles": ["shoulders"], "frequency": 3},
+            {"muscles": ["back-deltoids"], "frequency": 3},
+            {"muscles": ["front-deltoids"], "frequency": 3},
             {"muscles": ["abs"], "frequency": 2},
             {"muscles": ["forearm"], "frequency": 2}
         ]
@@ -235,7 +241,8 @@
         "id": 39,
         "sport": "Boxing",
         "muscles": [
-            {"muscles": ["shoulders"], "frequency": 3},
+            {"muscles": ["back-deltoids"], "frequency": 3},
+            {"muscles": ["front-deltoids"], "frequency": 3},
             {"muscles": ["upper-back"], "frequency": 2},
             {"muscles": ["triceps"], "frequency": 2},
             {"muscles": ["abs"], "frequency": 2}
@@ -269,7 +276,8 @@
             {"muscles": ["abs"], "frequency": 2},
             {"muscles": ["lower-back"], "frequency": 2},
             {"muscles": ["upper-back"], "frequency": 2},
-            {"muscles": ["shoulders"], "frequency": 2}
+            {"muscles": ["back-deltoids"], "frequency": 2},
+            {"muscles": ["front-deltoids"], "frequency": 2}
         ]
     },
     {
@@ -280,7 +288,8 @@
             {"muscles": ["hamstring"], "frequency": 3},
             {"muscles": ["gluteal"], "frequency": 3},
             {"muscles": ["upper-back"], "frequency": 3},
-            {"muscles": ["shoulders"], "frequency": 3}
+            {"muscles": ["back-deltoids"], "frequency": 3},
+            {"muscles": ["front-deltoids"], "frequency": 3}
         ]
     },
     {
@@ -301,7 +310,8 @@
             {"muscles": ["quadriceps"], "frequency": 3},
             {"muscles": ["hamstring"], "frequency": 3},
             {"muscles": ["upper-back"], "frequency": 3},
-            {"muscles": ["shoulders"], "frequency": 3},
+            {"muscles": ["back-deltoids"], "frequency": 3},
+            {"muscles": ["front-deltoids"], "frequency": 3},
             {"muscles": ["abs"], "frequency": 2}
         ]
     },
@@ -320,7 +330,8 @@
         "sport": "Gymnastics",
         "muscles": [
             {"muscles": ["upper-back"], "frequency": 3},
-            {"muscles": ["shoulders"], "frequency": 3},
+            {"muscles": ["back-deltoids"], "frequency": 3},
+            {"muscles": ["front-deltoids"], "frequency": 3},
             {"muscles": ["abs"], "frequency": 3},
             {"muscles": ["forearm"], "frequency": 2}
         ]
@@ -350,7 +361,8 @@
         "sport": "Kayaking",
         "muscles": [
             {"muscles": ["upper-back"], "frequency": 3},
-            {"muscles": ["shoulders"], "frequency": 3},
+            {"muscles": ["back-deltoids"], "frequency": 3},
+            {"muscles": ["front-deltoids"], "frequency": 3},
             {"muscles": ["forearm"], "frequency": 2},
             {"muscles": ["abs"], "frequency": 2}
         ]
@@ -401,7 +413,8 @@
         "sport": "Paddleboarding",
         "muscles": [
             {"muscles": ["upper-back"], "frequency": 3},
-            {"muscles": ["shoulders"], "frequency": 2},
+            {"muscles": ["back-deltoids"], "frequency": 2},
+            {"muscles": ["front-deltoids"], "frequency": 2},
             {"muscles": ["abs"], "frequency": 2},
             {"muscles": ["forearm"], "frequency": 2}
         ]
@@ -431,7 +444,8 @@
         "sport": "Surfing",
         "muscles": [
             {"muscles": ["upper-back"], "frequency": 3},
-            {"muscles": ["shoulders"], "frequency": 2},
+            {"muscles": ["back-deltoids"], "frequency": 2},
+            {"muscles": ["front-deltoids"], "frequency": 2},
             {"muscles": ["abs"], "frequency": 2},
             {"muscles": ["gluteal"], "frequency": 2}
         ]
@@ -485,7 +499,8 @@
         "muscles": [
             {"muscles": ["upper-back"], "frequency": 3},
             {"muscles": ["lower-back"], "frequency": 3},
-            {"muscles": ["shoulders"], "frequency": 3},
+            {"muscles": ["back-deltoids"], "frequency": 3},
+            {"muscles": ["front-deltoids"], "frequency": 3},
             {"muscles": ["quadriceps"], "frequency": 3}
         ]
     },
@@ -612,7 +627,8 @@
         "sport": "Caddying",
         "muscles": [
             {"muscles": ["upper-back"], "frequency": 2},
-            {"muscles": ["shoulders"], "frequency": 2}
+            {"muscles": ["back-deltoids"], "frequency": 2},
+            {"muscles": ["front-deltoids"], "frequency": 2}
         ]
     },
     {
@@ -659,7 +675,8 @@
             {"muscles": ["upper-back"], "frequency": 3},
             {"muscles": ["abs"], "frequency": 3},
             {"muscles": ["forearm"], "frequency": 2},
-            {"muscles": ["shoulders"], "frequency": 2}
+            {"muscles": ["back-deltoids"], "frequency": 2},
+            {"muscles": ["front-deltoids"], "frequency": 2}
         ]
     },
     {
@@ -668,7 +685,8 @@
         "muscles": [
             {"muscles": ["upper-back"], "frequency": 3},
             {"muscles": ["lower-back"], "frequency": 3},
-            {"muscles": ["shoulders"], "frequency": 2},
+            {"muscles": ["back-deltoids"], "frequency": 2},
+            {"muscles": ["front-deltoids"], "frequency": 2},
             {"muscles": ["forearm"], "frequency": 2}
         ]
     },
@@ -679,7 +697,8 @@
             {"muscles": ["quadriceps"], "frequency": 2},
             {"muscles": ["hamstring"], "frequency": 2},
             {"muscles": ["forearm"], "frequency": 2},
-            {"muscles": ["shoulders"], "frequency": 2}
+            {"muscles": ["back-deltoids"], "frequency": 2},
+            {"muscles": ["front-deltoids"], "frequency": 2}
         ]
     },
     {
@@ -706,7 +725,8 @@
         "id": 103,
         "sport": "Box Fitness",
         "muscles": [
-            {"muscles": ["shoulders"], "frequency": 3},
+            {"muscles": ["back-deltoids"], "frequency": 3},
+            {"muscles": ["front-deltoids"], "frequency": 3},
             {"muscles": ["upper-back"], "frequency": 2},
             {"muscles": ["triceps"], "frequency": 2},
             {"muscles": ["abs"], "frequency": 2}
@@ -727,7 +747,8 @@
         "sport": "Wheelchair Pushing",
         "muscles": [
             {"muscles": ["upper-back"], "frequency": 3},
-            {"muscles": ["shoulders"], "frequency": 3},
+            {"muscles": ["back-deltoids"], "frequency": 3},
+            {"muscles": ["front-deltoids"], "frequency": 3},
             {"muscles": ["forearm"], "frequency": 2}
         ]
     },
@@ -738,7 +759,8 @@
             {"muscles": ["quadriceps"], "frequency": 2},
             {"muscles": ["hamstring"], "frequency": 2},
             {"muscles": ["forearm"], "frequency": 2},
-            {"muscles": ["shoulders"], "frequency": 2}
+            {"muscles": ["back-deltoids"], "frequency": 2},
+            {"muscles": ["front-deltoids"], "frequency": 2}
         ]
     },
     {
@@ -793,7 +815,8 @@
             {"muscles": ["quadriceps"], "frequency": 2},
             {"muscles": ["hamstring"], "frequency": 2},
             {"muscles": ["forearm"], "frequency": 2},
-            {"muscles": ["shoulders"], "frequency": 2}
+            {"muscles": ["back-deltoids"], "frequency": 2},
+            {"muscles": ["front-deltoids"], "frequency": 2}
         ]
     },
     {
@@ -812,7 +835,8 @@
         "muscles": [
             {"muscles": ["upper-back"], "frequency": 2},
             {"muscles": ["forearm"], "frequency": 2},
-            {"muscles": ["shoulders"], "frequency": 2}
+            {"muscles": ["back-deltoids"], "frequency": 2},
+            {"muscles": ["front-deltoids"], "frequency": 2}
         ]
     },
     {
@@ -855,7 +879,8 @@
         "sport": "Table Tennis",
         "muscles": [
             {"muscles": ["forearm"], "frequency": 2},
-            {"muscles": ["shoulders"], "frequency": 2},
+            {"muscles": ["back-deltoids"], "frequency": 2},
+            {"muscles": ["front-deltoids"], "frequency": 2},
             {"muscles": ["quadriceps"], "frequency": 1},
             {"muscles": ["hamstring"], "frequency": 1}
         ]
@@ -890,7 +915,8 @@
         "sport": "Disc Golf",
         "muscles": [
             {"muscles": ["forearm"], "frequency": 2},
-            {"muscles": ["shoulders"], "frequency": 2},
+            {"muscles": ["back-deltoids"], "frequency": 2},
+            {"muscles": ["front-deltoids"], "frequency": 2},
             {"muscles": ["upper-back"], "frequency": 1}
         ]
     },
@@ -900,7 +926,8 @@
         "muscles": [
             {"muscles": ["upper-back"], "frequency": 2},
             {"muscles": ["lower-back"], "frequency": 2},
-            {"muscles": ["shoulders"], "frequency": 2}
+            {"muscles": ["back-deltoids"], "frequency": 2},
+            {"muscles": ["front-deltoids"], "frequency": 2}
         ]
     },
     {
