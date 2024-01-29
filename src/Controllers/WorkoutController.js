@@ -3,6 +3,7 @@ export async function getLastWorkouts(accessToken){
         const uri = `https://whoop-performance-backend-e57e252e2747.herokuapp.com/api/workout/getLast10Workouts/${accessToken}`
         const response = await fetch(uri, {
             method: 'GET',
+            mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*'
@@ -25,6 +26,7 @@ export async function getWorkoutByDates(accessToken){
 
     const response = await fetch(uri, {
         method: 'GET', 
+        mode: 'no-cors',
         headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*'
@@ -43,6 +45,7 @@ export async function getWorkoutById(accessToken, id){
 
     const response = await fetch(uri, {
         method: 'GET',
+        mode: 'no-cors',
         headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*'

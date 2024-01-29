@@ -6,6 +6,7 @@ export async function getStrain(accessToken) {
 
   const cycleResponse = await fetch(uri, {
     method:'GET',
+    mode: 'no-cors',
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'
@@ -25,6 +26,7 @@ export async function getRecovery(token, cycle) {
   
   const recoveryResponse = await fetch(uri, {
     method:'GET',
+    mode: 'no-cors',
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'
