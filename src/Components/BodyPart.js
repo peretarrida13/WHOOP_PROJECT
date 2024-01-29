@@ -28,10 +28,10 @@ export default function BodyPart({ token }) {
     if(loading){
         return(
           <Box sx={{display:'flex', justifyContent:'center', mt:25}}>
-            <CircularProgress size={75} sx={{justifyContent:'center', alignItems:'center', color:'#00F19F'}}/>
           </Box>
         )
-      }
+    }
+    
     return (
         <Box>
             <Typography

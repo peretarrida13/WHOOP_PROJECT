@@ -34,8 +34,6 @@ export const getMusclesFromWorkouts = (exercises) => {
         }
     }
 
-  
-    
     return muscles;
 }
 
