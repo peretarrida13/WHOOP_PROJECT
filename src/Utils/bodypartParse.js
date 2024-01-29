@@ -1,3 +1,4 @@
+import { WorkOff } from '@mui/icons-material';
 import workouts from '../Exercises/Workout.json';
 
 function daysBetweenDates(isoDate) {
@@ -26,6 +27,8 @@ export const getMusclesFromWorkouts = (exercises) => {
                     } else{
                         workouts[j].muscles[k].frequency = 0;
                     }
+
+                    workouts[j].muscles[k].name = workouts[j].sport;
                     
                     if(shouldAdd(workouts[j].muscles[k], muscles))muscles.push(workouts[j].muscles[k]);
                 }
