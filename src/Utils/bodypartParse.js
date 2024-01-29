@@ -27,7 +27,7 @@ export const getMusclesFromWorkouts = (exercises) => {
                     } else{
                         workouts[j].muscles[k].frequency = 0;
                     }
-
+                    
                     workouts[j].muscles[k].name = workouts[j].sport;
                     
                     if(shouldAdd(workouts[j].muscles[k], muscles))muscles.push(workouts[j].muscles[k]);
@@ -35,7 +35,6 @@ export const getMusclesFromWorkouts = (exercises) => {
             }
         }
     }
-    console.log(muscles)
     return muscles;
 }
 
