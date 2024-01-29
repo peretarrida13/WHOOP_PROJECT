@@ -14,6 +14,7 @@ export const getMusclesFromWorkouts = (exercises) => {
     var muscles = [];
     console.log('exericses', exercises)
     for(let i = 0; i < exercises.length; ++i){
+        console.log('workouts', workouts)
         for(let j = 0; j < workouts.length; ++j){
             if(exercises[i].sport_id === workouts[j].id){
                 for(let k = 0; k < workouts[j].muscles.length; ++k){
