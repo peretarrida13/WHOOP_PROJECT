@@ -34,6 +34,7 @@ export default function BodyPart({ token }) {
     }
 
     if(muscles.length === 0 || sore.length  === 0){
+        console.log('here')
         return (
             <Box>
                 <Typography
