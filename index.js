@@ -45,6 +45,8 @@ app.use(cors());
 
 app.use('/api', require('./routes/user.js'));
 app.use('/api', require('./routes/illness.js'));
+app.use('/api', require('./routes/workout.js'));
+app.use('/api', require('./routes/StrainAndRecovery.js'));
 
 app.listen(port, () => {
   console.log(`Whoop performance listening on port ${port}`)
