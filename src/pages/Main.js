@@ -46,7 +46,7 @@ function Main() {
           setWorkouts(last10Workouts.records);
           setLastWorkout(last10Workouts.records[0]);
         } catch(err){
-          //await saveToken(cookieWhoop);
+          await saveToken(cookieWhoop);
           console.log(err)
         }
       } else {
