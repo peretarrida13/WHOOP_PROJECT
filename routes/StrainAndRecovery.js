@@ -7,7 +7,7 @@ app.get('/strain/:token', async (req, res) => {
     const query = new URLSearchParams({
         limit: "1",
     });
-
+    
     const uri = `https://api.prod.whoop.com/developer/v1/cycle?${query}`;
 
     const cycleResponse = await fetch(uri, {
