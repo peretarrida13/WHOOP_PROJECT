@@ -13,10 +13,10 @@ export async function getLastWorkouts(accessToken){
             method: 'GET',
             headers: {
                 Authorization: auth,
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': 'https://whoop-performance-frontend-a54d4e25e6a0.herokuapp.com',
+                'Content-Type': 'application/json'
             }
         });
+        
 
         if(response.status === 200){
             const data = await response.json();
