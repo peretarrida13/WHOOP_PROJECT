@@ -24,10 +24,8 @@ app.get('/workout/getLast10Workouts/:token', async (req, res) => {
             const data = await response.json();
             res.status(200).json(data);
         }
-        else res.status(500).json({message: "Error getting the last 10 workouts"});
-
     } catch(err){
-        res.status(500).json({message: err.message});
+        throw err;  
     }
 })
 
