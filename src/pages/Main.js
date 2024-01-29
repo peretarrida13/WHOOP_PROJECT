@@ -30,7 +30,7 @@ function Main() {
     await setToken(newToken);
     
     if(newToken === undefined || newToken === null){
-      window.location.href = '/login';  // redirect to login page
+      //window.location.href = '/login';  // redirect to login page
     } else{
       const last10Workouts = await getLastWorkouts(newToken);
       setWorkouts(last10Workouts.records);
