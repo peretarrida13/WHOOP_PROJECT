@@ -41,7 +41,7 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
-//app.use(cors());
+app.use(cors());
 
 app.use('/api', require('./routes/user.js'));
 app.use('/api', require('./routes/illness.js'));
