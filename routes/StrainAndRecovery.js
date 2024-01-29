@@ -19,6 +19,7 @@ app.get('/strain/:token', async (req, res) => {
   
     if (cycleResponse.status === 200) {
       const data = cycleResponse.json();
+      console.log(data)
       res.status(200).json(data);
     } else {
       throw new Error(`Received ${cycleResponse.status} status from Whoop`);
