@@ -51,7 +51,7 @@ function Main() {
           console.log(err)
         }
       } else {
-        window.location.href = '/login';  // redirect to login page
+        //window.location.href = '/login';  // redirect to login page
       }
     }
     init();
