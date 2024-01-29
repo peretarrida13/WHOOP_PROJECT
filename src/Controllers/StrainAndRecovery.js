@@ -6,6 +6,10 @@ export async function getStrain(accessToken) {
 
   const cycleResponse = await fetch(uri, {
     method:'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    },
   });
 
   if (cycleResponse.status === 200) {
@@ -21,6 +25,10 @@ export async function getRecovery(token, cycle) {
   
   const recoveryResponse = await fetch(uri, {
     method:'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    },
   });
 
   if (recoveryResponse.status === 200) {
