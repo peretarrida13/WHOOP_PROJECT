@@ -25,7 +25,7 @@ app.get('/workout/getLast10Workouts/:token', async (req, res) => {
             const data = await response.json();
             res.status(200).json(data);
         }
-        res.status(500).json({message: "Error getting the last 10 workouts"});
+        else res.status(500).json({message: "Error getting the last 10 workouts"});
 
     } catch(err){
         res.status(500).json({message: err.message});
@@ -70,7 +70,7 @@ app.get('/workout/getWorkoutByDates/:token', async (req, res) => {
         const data = await response.json();
         res.status(200).json(data);
     }
-    res.status(500).json({message: "Error getting workout by dates"});
+    else res.status(500).json({message: "Error getting workout by dates"});
 
 })
 
@@ -88,8 +88,7 @@ app.get('/workout/getWorkoutById/:token/:workoutId', async (req, res) => {
         const data = await response.json();
         res.status(200).json(data);
     }
-
-    res.status(500).json({message: "Error getting workout by id"});
+    else res.status(500).json({message: "Error getting workout by id"});
 
 })
 
