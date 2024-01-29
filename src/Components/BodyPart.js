@@ -1,5 +1,5 @@
 import Model from 'react-body-highlighter';
-import {Box, Typography, Container} from '@mui/material';
+import {Box, Typography, CircularProgress} from '@mui/material';
 import { getWorkoutByDates } from '../Controllers/WorkoutController';
 import { useEffect, useState } from 'react';
 import { getMusclesFromWorkouts } from '../Utils/bodypartParse';
@@ -8,6 +8,7 @@ import '../Styles.css'
 export default function BodyPart({ token }) {
     const [sore, setSore] = useState([]);
     const [muscles, setMuscles] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const getMuscles = async () => {
         const data = await getWorkoutByDates(token);
@@ -21,8 +22,16 @@ export default function BodyPart({ token }) {
     useEffect(() => {
         if(muscles.length === 0) return;
         setSore(getMusclesFromWorkouts(muscles))
+        setLoading(false);
     }, [muscles])
 
+    if(loading){
+        return(
+          <Box sx={{display:'flex', justifyContent:'center', mt:25}}>
+            <CircularProgress size={75} sx={{justifyContent:'center', alignItems:'center', color:'#00F19F'}}/>
+          </Box>
+        )
+      }
     return (
         <Box>
             <Typography
