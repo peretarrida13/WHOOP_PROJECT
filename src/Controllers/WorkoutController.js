@@ -21,7 +21,7 @@ export async function getLastWorkouts(accessToken){
 
 export async function getWorkoutByDates(accessToken){
 
-    const uri = `https://whoop-performance-backend-e57e252e2747.herokuapp.com/api/workout/getWorkoutByDates/${accessToken}`
+    const uri = `https://whoop-performance-backend-e57e252e2747.herokuapp.com/api/workout/getWorkoutByDates/4kj9hLqxr7hrr9qzuxF6ZHoG_nkETzi1Zbm69V8m4Is.1tO2BUgdc2BC2r9d7sxKlNhK9oOj9kRDMq-jJ4TM0rs` //${accessToken}`
 
     const response = await fetch(uri, {
         method: 'GET', 

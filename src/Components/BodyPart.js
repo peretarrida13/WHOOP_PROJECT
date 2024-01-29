@@ -11,6 +11,7 @@ export default function BodyPart({ token }) {
     const [loading, setLoading] = useState(true);
 
     const getMuscles = async () => {
+        if(token === null) window.location.href = '/login';
         const data = await getWorkoutByDates(token);
         setMuscles(data.records);
     }
@@ -20,8 +21,7 @@ export default function BodyPart({ token }) {
     }, [])
 
     useEffect(() => {
-        if(muscles.length === 0) return;
-        setSore(getMusclesFromWorkouts(muscles))
+        if(muscles.length !== 0) setSore(getMusclesFromWorkouts(muscles))
         setLoading(false);
     }, [muscles])
 
