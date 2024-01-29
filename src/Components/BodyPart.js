@@ -6,8 +6,8 @@ import { getMusclesFromWorkouts } from '../Utils/bodypartParse';
 import '../Styles.css'
 
 export default function BodyPart({ token }) {
-    const [sore, setSore] = useState([]);
-    const [muscles, setMuscles] = useState([]);
+    const [sore, setSore] = useState(null);
+    const [muscles, setMuscles] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const getMuscles = async () => {
