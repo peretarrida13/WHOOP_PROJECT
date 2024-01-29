@@ -21,7 +21,9 @@ export default function BodyPart({ token }) {
     }, [])
 
     useEffect(() => {
-        if(muscles.length !== 0) setSore(getMusclesFromWorkouts(muscles))
+        console.log(muscles)
+        if(muscles.length !== 0) await setSore(getMusclesFromWorkouts(muscles))
+        console.log(sore)
         setLoading(false);
     }, [muscles])
 
