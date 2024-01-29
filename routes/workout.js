@@ -12,7 +12,6 @@ app.get('/workout/getLast10Workouts/:token', async (req, res) => {
         });
 
         const uri = `https://api.prod.whoop.com/developer/v1/activity/workout?${query}`
-        console.log('here', req.params.token)
         const response = await fetch(uri, {
             method: 'GET',
             headers: {
