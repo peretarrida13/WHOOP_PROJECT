@@ -12,7 +12,7 @@ function daysBetweenDates(isoDate) {
 
 export const getMusclesFromWorkouts = (exercises) => {
     var muscles = [];
-
+    console.log('exericses', exercises)
     for(let i = 0; i < exercises.length; ++i){
         for(let j = 0; j < workouts.length; ++j){
             if(exercises[i].sport_id === workouts[j].id){

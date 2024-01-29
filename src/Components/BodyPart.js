@@ -21,9 +21,9 @@ export default function BodyPart({ token }) {
     }, [])
 
     useEffect(() => {
-        console.log(muscles)
+        console.log('muscles', muscles)
         if(muscles.length !== 0) setSore(getMusclesFromWorkouts(muscles))
-        console.log(sore)
+        console.log('sore', sore)
         setLoading(false);
     }, [muscles])
 
