@@ -19,6 +19,7 @@ function Main() {
 
   const getNewToken = async (token) => {
     const newToken = await getRefreshToken(token)
+    console.log(newToken);
     cookies.set('whoopPerformance', token, { path: '/' });
     return newToken
   }
