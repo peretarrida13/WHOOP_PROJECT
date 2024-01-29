@@ -6,8 +6,8 @@ import { getMusclesFromWorkouts } from '../Utils/bodypartParse';
 import '../Styles.css'
 
 export default function BodyPart({ token }) {
-    const [sore, setSore] = useState(null);
-    const [muscles, setMuscles] = useState(null);
+    const [sore, setSore] = useState([]);
+    const [muscles, setMuscles] = useState([]);
     const [loading, setLoading] = useState(true);
 
     const getMuscles = async () => {
@@ -32,7 +32,7 @@ export default function BodyPart({ token }) {
         )
     }
 
-    if(muscles === null || sore === null){
+    if(muscles.length === 0 || sore.length  === 0){
         return (
             <Box>
                 <Typography
