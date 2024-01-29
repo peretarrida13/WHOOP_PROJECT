@@ -21,7 +21,6 @@ export default function BodyPart({ token }) {
     }, [])
 
     useEffect(() => {
-        console.log(muscles)
         setSore(getMusclesFromWorkouts(muscles))
         setLoading(false);
     }, [muscles])
@@ -32,37 +31,6 @@ export default function BodyPart({ token }) {
           </Box>
         )
     }
-
-    if(muscles.length === 0 || sore.length  === 0){
-        console.log('here')
-        return (
-            <Box>
-                <Typography
-                    variant='h4'
-                    sx={{
-                        ml:15, 
-                        mb:5, 
-                    }}
-                    className='headline'
-                >
-                    Muscle Recovery
-                </Typography>
-                <Box sx={{display:'flex', ml:5}}>
-                    <Model
-                        bodyColor='#16EC06'
-                        style={{ width: '15rem', paddingRight: '10px'}}
-                    />
-                    <Model
-                        bodyColor='#16EC06'
-                        type="posterior"
-                        style={{ width: '15rem', paddingLeft: '10px' }}
-                    />
-
-                </Box>
-            </Box>
-        )
-    }
-
     
     return (
         <Box>

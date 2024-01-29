@@ -32,7 +32,7 @@ export const getMusclesFromWorkouts = (exercises) => {
             }
         }
     }
-
+    console.log(muscles)
     return muscles;
 }
 
