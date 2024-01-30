@@ -1,8 +1,23 @@
 import { Button } from "@mui/material";
-import React from "react";
-import  Typewriter  from 'typewriter-effect'
+import React, { useEffect } from "react";
+import  Typewriter  from 'typewriter-effect';
+import Cookie from 'universal-cookie';
 
 export default function LandingPage() {
+    const cookies = new Cookie();
+
+    useEffect(() => {
+        const init = async() => {
+            const cookieWhoop = await cookies.get('whoopPerformance'); 
+            if(cookieWhoop) {
+                window.location.href = '/dashboard';
+            }
+        }
+
+        init()
+
+    },[])
+
     return (
         <div>
             <div id="topBarLogo" style={{width:'100%', display:'flex', alignItems:'center', justifyContent:'center', zIndex:-1, marginTop:'2%'}}>
