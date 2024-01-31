@@ -140,10 +140,10 @@ app.get('/auth/performance',
 
 
 app.get('/auth/performance/callback',
-    passport.authenticate('oauth2', {failureRedirect: 'https://winnerperformance.com/login', failureMessage: true }),
+    passport.authenticate('oauth2', {failureRedirect: 'https://www.winnerperformance.com/login', failureMessage: true }),
 async function (req, res) {
     console.log('userreturn', req.user)
-    res.redirect('https://winnerperformance.com/token/' + req.user.acessToken );
+    res.redirect('https://www.winnerperformance.com/token/' + req.user.acessToken );
 });
 
 
