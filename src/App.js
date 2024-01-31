@@ -8,6 +8,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Navbar from "./Components/Navbar";
 import Token from "./pages/Token";
 import LandingPage from "./pages/LandingPage";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 const darkTheme = createTheme({
   components: {
@@ -39,8 +40,9 @@ function App() {
           window.location.pathname === '/' ? null : <Navbar/>
         }
         <Routes>
-          <Route path="/dashboard" element={<Main />} />
           <Route path="/" element={<LandingPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/dashboard" element={<Main />} />
           <Route path="/login" element={<LogIn />} /> 
           <Route path="/report/:id" element={<Report />} />
           <Route path="/token/:token" element={<Token />} />
